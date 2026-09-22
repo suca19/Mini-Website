@@ -1,0 +1,20 @@
+nav {
+    background-color: #c5e9d9;
+    padding: 15px;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+}
+body { background-color: #985939;
+}
+#counter {
+    padding: auto;
+    align-self: center;
+}
+
+#contact-form {
+    border-color: black;
+    margin: 0 auto;
+    width: 50%;
+
+}
