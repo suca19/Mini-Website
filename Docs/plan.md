@@ -2,11 +2,13 @@
 
 Prototype website + video + report | Agile (Scrum, solo version)
 
-> **For the AI agent:** this file is the only source of truth. Build only what is written here. If something is missing or marked **OPEN**, ask the human before building it. Do not add pages, features, content or rules that are not in this file.
+> **For the reviewer:** this file is the only source of truth. The student writes all the code. Review the student's work against this file. Do not write or edit code. If something is missing or marked **OPEN**, ask the student. Flag anything built that is not in this file.
 
 ---
 
-## 0. Agent rules
+## 0. Project rules
+
+The student follows these rules, and the reviewer checks them.
 
 1. Use only **HTML, CSS and JavaScript**. No server-side code, no backend, no database.
 2. **Comments in every HTML, CSS and JS file** explaining the code.
@@ -59,7 +61,7 @@ Must = needed to pass the brief. Should = important. Could = nice to have.
 | `solutions.html` | EV options, cost calculator, benefits |
 | `about.html` | Mission, partners, disclaimer |
 | `contact.html` | Contact form with JavaScript validation |
-| fifth page | **OPEN**: "coming on", not described yet. Do not build until the human describes it. |
+| fifth page | **OPEN**: "coming on", not described yet. Do not expect it until the student describes it. |
 
 ### Contact form rules (JavaScript only, no server code)
 
@@ -149,6 +151,7 @@ Sprint 0 → Sprint 1 → Sprint 2 → Sprint 3 → Sprint 4
 
 ### End of every sprint
 
+- **Reviewer check:** ask the reviewer to check the sprint against this plan, then fix any problems yourself
 - **Review:** does the work meet the user stories?
 - **Retrospective:** what went well, what to change?
 
@@ -165,7 +168,7 @@ Sprint 0 → Sprint 1 → Sprint 2 → Sprint 3 → Sprint 4
 | Images | Own photos and free ones |
 | Audio | Audacity or a text-to-speech clip |
 | Video recording | OBS Studio |
-| Agents | **OPEN**: not specified yet |
+| Agent | Reviewer (read-only): checks each sprint and the code against this plan and reports problems. It does not write code. |
 
 ---
 
@@ -175,24 +178,23 @@ Why Agile fits ElectroCocha: fuel policy, EV incentives and charging plans in Bo
 
 ---
 
-## 8. OPEN items (ask the human before building)
+## 8. OPEN items (decide before building)
 
 1. **Fifth page:** what is it and what goes on it?
 2. **Cost calculator:** which inputs and values should it use? (The file only says "compare diesel and electric running costs".)
 3. **Query type dropdown:** which options should it list?
 4. **Infographic:** it is in the requirements and user story 8, but no sprint task mentions it. Include it or not?
 5. **Charging station locations (User7):** no page in the plan covers it. Which page, if any, should show it?
-6. **Agents:** which agents or skills should be used, and for what?
-7. **Folder and file names** other than `style.css`, `validation.js`, `calculator.js` and the four named pages.
+6. **Folder and file names** other than `style.css`, `validation.js`, `calculator.js` and the four named pages.
 
 ---
 
-## 9. Prompt to start each sprint
+## 9. Prompt to review each sprint
 
 ```
-Read plan.md. We are working on SPRINT <N>.
-Do only the tasks listed for this sprint, following section 0.
-Use only HTML, CSS and JavaScript, with comments in every file.
-If anything is missing or marked OPEN, ask me first.
-When finished, list the files changed and check the sprint's deliverable.
+Read plan.md. Review SPRINT <N>.
+Check the sprint's tasks and deliverable against the plan and the files I wrote.
+Do not edit any files or write the solution. Report problems with file and line,
+why they matter, and a hint.
+Flag anything that is not in plan.md. If anything is missing or marked OPEN, ask me.
 ```
