@@ -1,0 +1,1 @@
+// main.js: shared JavaScript for ElectroCocha (will hold the site's scripts)

@@ -1,0 +1,21 @@
+/* CSS Variables for consistent theming across the website */
+:root {
+  --color-primary: #0F2A43;
+  --color-accent: #9BE564;
+  --color-bg: #FFFFFF;
+  --color-text: #1A1A1A;
+  --color-error: #B00020;
+}
+
+/* Text logo: white text on the navy header */
+.logo {
+  color: #d1db3a;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-decoration: none; /* removes the default link underline */
+}
+
+/* "Cocha" part of the logo in the accent colour */
+.logo span {
+  color: var(--color-accent); /* lime */
+}
