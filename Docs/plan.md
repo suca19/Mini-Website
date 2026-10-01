@@ -2,13 +2,13 @@
 
 Prototype website + video + report | Agile (Scrum, solo version)
 
-> **For the reviewer:** this file is the only source of truth. The student writes all the code. Review the student's work against this file. Do not write or edit code. If something is missing or marked **OPEN**, ask the student. Flag anything built that is not in this file.
+> **For the reviewer:** this file is the only source of truth. The user writes all the code. Review the user's work against this file. Do not write or edit code. If something is missing or marked **OPEN**, ask the user. Flag anything built that is not in this file.
 
 ---
 
 ## 0. Project rules
 
-The student follows these rules, and the reviewer checks them.
+The user follows these rules, and the reviewer checks them.
 
 1. Use only **HTML, CSS and JavaScript**. No server-side code, no backend, no database.
 2. **Comments in every HTML, CSS and JS file** explaining the code.
@@ -108,6 +108,15 @@ Sprint 0 → Sprint 1 → Sprint 2 → Sprint 3 → Sprint 4
                        form
 ```
 
+## Folder structure
+
+electrococha/
+├── index.html
+├── pages/    solutions.html, about.html, contact.html, fifth.html
+├── style/    main.css
+├── src/      main.js, validation.js, calculator.js
+└── Docs/     working documents (plan, screenshots)
+
 ### Sprint 0: Setup
 
 - [ ] Create Git repository and folder structure
@@ -118,7 +127,7 @@ Sprint 0 → Sprint 1 → Sprint 2 → Sprint 3 → Sprint 4
 ### Sprint 1: Foundation
 
 - [ ] Shared navigation and footer
-- [ ] `style.css` (theme, responsive layout)
+- [ ] `style/main.css` (theme, responsive layout)
 - [ ] `index.html` with problem, solution, call to action
 - [ ] Accessibility basics (semantic tags, alt text, contrast)
 - **Deliverable:** working home page with navigation
