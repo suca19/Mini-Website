@@ -21,11 +21,72 @@
       </nav>
     </header>
     <main>
-      <!-- sections go here -->
+      <h1>Contact us</h1>
+
+      <!-- novalidate: turns off the browser's own checks so OUR JavaScript does the validation -->
+      <form id="contact-form" novalidate>
+        <!-- Name -->
+        <label for="name">Name</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          aria-describedby="name-error"
+        />
+        <span class="error" id="name-error"></span>
+
+        <!-- Phone -->
+        <label for="phone">Phone</label>
+        <input
+          type="text"
+          id="phone"
+          name="phone"
+          aria-describedby="phone-error"
+        />
+        <span class="error" id="phone-error"></span>
+
+        <!-- Email -->
+        <label for="email">Email</label>
+        <input
+          type="text"
+          id="email"
+          name="email"
+          aria-describedby="email-error"
+        />
+        <span class="error" id="email-error"></span>
+
+        <!-- Query type -->
+        <label for="query">Query type</label>
+        <select id="query" name="query" aria-describedby="query-error">
+          <option value="">Choose one...</option>
+          <option value="general">General information</option>
+          <option value="costs">Vehicle costs and comparison</option>
+          <option value="financing">Financing options</option>
+          <option value="incentives">Incentives</option>
+          <option value="other">Other</option>
+        </select>
+        <span class="error" id="query-error"></span>
+
+        <!-- Message -->
+        <label for="message">Message</label>
+        <textarea
+          id="message"
+          name="message"
+          rows="5"
+          aria-describedby="message-error"
+        ></textarea>
+        <span class="error" id="message-error"></span>
+
+        <button type="submit" class="button">Send</button>
+      </form>
+
+      <!-- Success message: shown by JavaScript after a valid submit -->
+      <p id="success" aria-live="polite"></p>
     </main>
     <footer>
       <p>&copy; 2026 ElectroCocha. All rights reserved.</p>
     </footer>
-    <script src="src/main.js"></script>
+    <script src="../src/main.js"></script>
+    <script src="../src/validation.js"></script>
   </body>
 </html>
