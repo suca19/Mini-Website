@@ -111,6 +111,8 @@ function validateForm(event) {
   }
 }
 
-// Connects validateForm to the form's submit event.
-document.getElementById("contact-form")
-        .addEventListener("submit", validateForm);
+// Connects validateForm to the contact form (only if this page has one)
+const contactForm = document.getElementById("contact-form");
+if (contactForm) {
+  contactForm.addEventListener("submit", validateForm);
+}

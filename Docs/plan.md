@@ -22,12 +22,12 @@ The user follows these rules, and the reviewer checks them.
 
 ## 1. The big picture
 
-| Question | Answer |
-|---|---|
-| What is the problem? | Bolivia has fuel shortages and diesel prices rose over 160%. Transport workers in Cochabamba are struggling. |
-| What is the idea? | **ElectroCocha**: a website that helps people in Cochabamba understand and switch to electric vehicles (costs, financing, incentives). |
-| Who is it for? | Bus and taxi operators, private drivers, commuters, local government. |
-| What do I hand in? | 1) Website (3-5 pages) 2) Video (max 5 min) 3) Report (max 1,200 words) |
+| Question             | Answer                                                                                                                                 |
+| -------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| What is the problem? | Bolivia has fuel shortages and diesel prices rose over 160%. Transport workers in Cochabamba are struggling.                           |
+| What is the idea?    | **ElectroCocha**: a website that helps people in Cochabamba understand and switch to electric vehicles (costs, financing, incentives). |
+| Who is it for?       | Bus and taxi operators, private drivers, commuters, local government.                                                                  |
+| What do I hand in?   | 1) Website (3-5 pages) 2) Video (max 5 min) 3) Report (max 1,200 words)                                                                |
 
 ---
 
@@ -35,17 +35,17 @@ The user follows these rules, and the reviewer checks them.
 
 Format: "As a [who], I want [what], so that [why]."
 
-| # | Story | Priority |
-|---|---|---|
-| User1 | As a visitor, I want to quickly understand the problem and the EV solution, so I know if it is relevant to me. | Must |
-| User2 | As a user, I want to get back to the home page from any page, so I never get lost. | Must |
-| User3 | As an operator, I want to send an enquiry with my details and query type, so someone can contact me. | Must |
-| User4 | As an operator, I want clear error messages on the form, so I can fix my mistakes. | Must |
-| User5 | As a user with a disability or slow internet, I want an accessible, light site. | Must |
-| User6 | As an operator, I want to compare diesel and electric running costs, so I can decide. | Should |
-| User7 | As a driver, I want to see charging station locations, so I know where I can charge. | Should |
-| User8 | As a visitor, I want video, audio and an infographic, so the information is easy to take in. | Should |
-| User9 | As a visitor, I want to know who is behind ElectroCocha, so I can trust it. | Could |
+| #     | Story                                                                                                          | Priority |
+| ----- | -------------------------------------------------------------------------------------------------------------- | -------- |
+| User1 | As a visitor, I want to quickly understand the problem and the EV solution, so I know if it is relevant to me. | Must     |
+| User2 | As a user, I want to get back to the home page from any page, so I never get lost.                             | Must     |
+| User3 | As an operator, I want to send an enquiry with my details and query type, so someone can contact me.           | Must     |
+| User4 | As an operator, I want clear error messages on the form, so I can fix my mistakes.                             | Must     |
+| User5 | As a user with a disability or slow internet, I want an accessible, light site.                                | Must     |
+| User6 | As an operator, I want to compare diesel and electric running costs, so I can decide.                          | Should   |
+| User7 | As a driver, I want to see charging station locations, so I know where I can charge.                           | Should   |
+| User8 | As a visitor, I want video, audio and an infographic, so the information is easy to take in.                   | Should   |
+| User9 | As a visitor, I want to know who is behind ElectroCocha, so I can trust it.                                    | Could    |
 
 Must = needed to pass the brief. Should = important. Could = nice to have.
 
@@ -55,24 +55,24 @@ Must = needed to pass the brief. Should = important. Could = nice to have.
 
 ### Pages (5)
 
-| Page | Purpose |
-|---|---|
-| `index.html` | Home: problem, solution, call to action |
-| `solutions.html` | EV options, cost calculator, benefits |
-| `about.html` | Mission, partners, disclaimer |
-| `contact.html` | Contact form with JavaScript validation |
-| fifth page | **OPEN**: "coming on", not described yet. Do not expect it until the student describes it. |
+| Page             | Purpose                                                                                    |
+| ---------------- | ------------------------------------------------------------------------------------------ |
+| `index.html`     | Home: problem, solution, call to action                                                    |
+| `solutions.html` | EV options, cost calculator, benefits                                                      |
+| `about.html`     | Mission, partners, disclaimer                                                              |
+| `contact.html`   | Contact form with JavaScript validation                                                    |
+| fifth page       | **OPEN**: "coming on", not described yet. Do not expect it until the student describes it. |
 
 ### Contact form rules (JavaScript only, no server code)
 
-| Field | Rule |
-|---|---|
-| Name | Letters and spaces only. No numbers or symbols. |
-| Phone | Numbers only, exactly 9 or 10 digits |
-| Email | Basic format check (has `@` and a domain) |
-| Query type | Dropdown, must pick one |
-| Message | Not empty |
-| All fields | No empty boxes |
+| Field      | Rule                                            |
+| ---------- | ----------------------------------------------- |
+| Name       | Letters and spaces only. No numbers or symbols. |
+| Phone      | Numbers only, exactly 9 or 10 digits            |
+| Email      | Basic format check (has `@` and a domain)       |
+| Query type | Dropdown, must pick one                         |
+| Message    | Not empty                                       |
+| All fields | No empty boxes                                  |
 
 ### Other requirements
 
@@ -90,11 +90,11 @@ Backend, database, real payments, real station data.
 
 ## 4. Why Scrum (Agile)
 
-| How it fits here | Scrum | Kanban |
-|---|---|---|
-| Work is done in | Fixed short sprints | A continuous flow |
-| Deadline fit | Great for a fixed deadline | Weaker, no time-boxes |
-| Easy to explain in report/Q&A | Yes (planning, review, retrospective) | Less to say |
+| How it fits here              | Scrum                                 | Kanban                |
+| ----------------------------- | ------------------------------------- | --------------------- |
+| Work is done in               | Fixed short sprints                   | A continuous flow     |
+| Deadline fit                  | Great for a fixed deadline            | Weaker, no time-boxes |
+| Easy to explain in report/Q&A | Yes (planning, review, retrospective) | Less to say           |
 
 **Decision: Scrum.** Solo version: I am the Product Owner, Scrum Master and Developer. My "friend" (the client) gives feedback at each sprint review.
 
@@ -112,10 +112,10 @@ Sprint 0 → Sprint 1 → Sprint 2 → Sprint 3 → Sprint 4
 
 electrococha/
 ├── index.html
-├── pages/    solutions.html, about.html, contact.html, fifth.html
-├── style/    main.css
-├── src/      main.js, validation.js, calculator.js
-└── Docs/     working documents (plan, screenshots)
+├── pages/ solutions.html, about.html, contact.html, fifth.html
+├── style/ main.css
+├── src/ main.js, validation.js, calculator.js
+└── Docs/ working documents (plan, screenshots)
 
 ### Sprint 0: Setup
 
@@ -142,9 +142,9 @@ electrococha/
 
 ### Sprint 3: Content pages
 
-- [ ] `solutions.html` with cost calculator (`calculator.js`)
-- [ ] Fifth page: **OPEN** (description coming)
-- [ ] Add video, audio clip
+- [ ] `solutions.html` with cost calculator (`calculator.js`) and input hints
+- [ ] `account.html` sign-in and sign-up forms (`account.js`)
+- [ ] Add video
 - **Deliverable:** all main content in place
 
 ### Sprint 4: Polish and hand-in
@@ -168,16 +168,16 @@ electrococha/
 
 ## 6. Environment and tools
 
-| Need | Tool |
-|---|---|
-| Code editor | VS Code |
-| Version control | Git (one commit per finished task) |
-| Task board | Trello |
-| Testing | Browser DevTools, W3C validator |
-| Images | Own photos and free ones |
-| Audio | Audacity or a text-to-speech clip |
-| Video recording | OBS Studio |
-| Agent | Reviewer (read-only): checks each sprint and the code against this plan and reports problems. It does not write code. |
+| Need            | Tool                                                                                                                  |
+| --------------- | --------------------------------------------------------------------------------------------------------------------- |
+| Code editor     | VS Code                                                                                                               |
+| Version control | Git (one commit per finished task)                                                                                    |
+| Task board      | Trello                                                                                                                |
+| Testing         | Browser DevTools, W3C validator                                                                                       |
+| Images          | Own photos and free ones                                                                                              |
+| Audio           | Audacity or a text-to-speech clip                                                                                     |
+| Video recording | OBS Studio                                                                                                            |
+| Agent           | Reviewer (read-only): checks each sprint and the code against this plan and reports problems. It does not write code. |
 
 ---
 
