@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ElectroCocha | Sign in</title>
+  <link rel="stylesheet" href="../style/main.css">
+</head>
+<body>
+  <!-- Header: same on every page -->
+  <header>
+    <nav>
+      <a href="../index.html" class="logo">Electro<span>Cocha</span></a>
+      <a href="../index.html">Home</a>
+      <a href="solutions.html">Solutions</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="account.html">Sign in</a>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <h1>Sign in or create an account</h1>
+      <p><small>Prototype only: no account is created and nothing is saved or sent. Please do not enter a real password.</small></p>
+    </section>
+
+    <div class="account-forms">
+      <!-- Sign-in form: novalidate so our own JavaScript checks the fields -->
+      <section>
+        <h2>Sign in</h2>
+        <form id="signin-form" novalidate>
+          <label for="signin-email">Email</label>
+          <input type="text" id="signin-email" autocomplete="email" aria-describedby="signin-email-error">
+          <span class="error" id="signin-email-error"></span>
+
+          <label for="signin-password">Password</label>
+          <input type="password" id="signin-password" autocomplete="current-password" aria-describedby="signin-password-error">
+          <span class="error" id="signin-password-error"></span>
+
+          <button type="submit" class="button">Sign in</button>
+        </form>
+        <p id="signin-success" aria-live="polite"></p>
+      </section>
+
+      <!-- Sign-up form -->
+      <section>
+        <h2>Sign up</h2>
+        <form id="signup-form" novalidate>
+          <label for="signup-name">Name</label>
+          <input type="text" id="signup-name" autocomplete="name" aria-describedby="signup-name-error">
+          <span class="error" id="signup-name-error"></span>
+
+          <label for="signup-email">Email</label>
+          <input type="text" id="signup-email" autocomplete="email" aria-describedby="signup-email-error">
+          <span class="error" id="signup-email-error"></span>
+
+          <label for="signup-password">Password (at least 8 characters)</label>
+          <input type="password" id="signup-password" autocomplete="new-password" aria-describedby="signup-password-error">
+          <span class="error" id="signup-password-error"></span>
+
+          <label for="signup-confirm">Confirm password</label>
+          <input type="password" id="signup-confirm" autocomplete="new-password" aria-describedby="signup-confirm-error">
+          <span class="error" id="signup-confirm-error"></span>
+
+          <button type="submit" class="button">Sign up</button>
+        </form>
+        <p id="signup-success" aria-live="polite"></p>
+      </section>
+    </div>
+  </main>
+
+  <!-- Footer: same on every page -->
+  <footer>
+    <p>&copy; 2026 ElectroCocha. All rights reserved.</p>
+    <a href="../index.html">Back to Home</a>
+  </footer>
+
+  <script src="../src/main.js"></script>
+  <!-- validation.js first: account.js reuses its functions -->
+  <script src="../src/validation.js"></script>
+  <script src="../src/account.js"></script>
+</body>
+</html>

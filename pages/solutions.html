@@ -17,19 +17,142 @@
         <a href="solutions.html">Solutions</a>
         <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
-        <a href="fifth.html">5Page</a>
+        <a href="account.html">Sign in</a>
       </nav>
     </header>
     <main>
-      <h1>About</h1>
-      <p>This page is coming soon.</p>
-    </main>
+        <!-- Intro -->
+        <section>
+          <h1>Solutions</h1>
+          <p>
+            Electric vehicles are one way to reduce a transport business's
+            dependence on diesel. On this page you can compare running costs,
+            see the possible benefits, and watch a short introduction.
+          </p>
+        </section>
+        <section>
+          <h2>Cost calculator</h2>
+          <p>
+            <small
+              >these are example values.</small
+            >
+          </p>
+
+          <form id="calc-form" novalidate>
+            <label for="distance">Distance driven per day (km)</label>
+            <small class="hint" id="distance-hint"
+              >Roughly how far the vehicle drives on a normal working day. Tip:
+              route length x number of trips.</small
+            >
+            <input
+              type="text"
+              id="distance"
+              aria-describedby="distance-hint distance-error"
+            />
+            <span class="error" id="distance-error"></span>
+
+            <label for="days">Days worked per month</label>
+            <small class="hint" id="days-hint"
+              >How many days a month the vehicle works.</small
+            >
+            <input
+              type="text"
+              id="days"
+              aria-describedby="days-hint days-error"
+            />
+            <span class="error" id="days-error"></span>
+
+            <label for="diesel-use">Diesel use (litres per 100 km)</label>
+            <small class="hint" id="diesel-use-hint"
+              >Tip: litres you fill up, divided by the km driven, times
+              100.</small
+            >
+            <input
+              type="text"
+              id="diesel-use"
+              aria-describedby="diesel-use-hint diesel-use-error"
+            />
+            <span class="error" id="diesel-use-error"></span>
+
+            <label for="diesel-price">Diesel price (per litre)</label>
+            <small class="hint" id="diesel-price-hint"
+              >Use the price on your last fuel receipt.</small
+            >
+            <input
+              type="text"
+              id="diesel-price"
+              aria-describedby="diesel-price-hint diesel-price-error"
+            />
+            <span class="error" id="diesel-price-error"></span>
+
+            <label for="ev-use">Electric use (kWh per 100 km)</label>
+            <small class="hint" id="ev-use-hint"
+              >Check the vehicle's specification sheet or ask the seller.</small
+            >
+            <input
+              type="text"
+              id="ev-use"
+              aria-describedby="ev-use-hint ev-use-error"
+            />
+            <span class="error" id="ev-use-error"></span>
+
+            <label for="ev-price">Electricity price (per kWh)</label>
+            <small class="hint" id="ev-price-hint"
+              >Use the price per kWh on your electricity bill.</small
+            >
+            <input
+              type="text"
+              id="ev-price"
+              aria-describedby="ev-price-hint ev-price-error"
+            />
+            <span class="error" id="ev-price-error"></span>
+
+            <button type="submit" class="button">Calculate</button>
+            <!-- type="button" so it fills the form without submitting it -->
+            <button type="button" id="example-button" class="button">
+              Use example values
+            </button>
+          </form>
+          <p>
+            <small>Example values are illustrative, not real prices.</small>
+          </p>
+          <!-- Results appear here; aria-live makes screen readers announce them -->
+          <div id="calc-result" aria-live="polite"></div>
+        </section>
+        <!-- Benefits -->
+        <section>
+          <h2>Possible benefits</h2>
+          <ul>
+            <li>
+              <strong>Lower running costs:</strong> use the calculator to
+              compare with your own figures.
+            </li>
+            <li>
+              <strong>Less dependence on fuel supply:</strong> electric vehicles
+              do not need diesel or petrol.
+            </li>
+            <li>
+              <strong>Financing and incentives:</strong> financing schemes and
+              tax incentives have been proposed for transport operators.
+            </li>
+          </ul>
+        </section>
+
+        <!-- Video: embedded from YouTube; no autoplay -->
+        <section>
+          <h2>Short introduction</h2>
+          <p>Learn more about electric vehicles in this short introduction video.</p>
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/xNZR4wB-T80?si=UJM5B069TWxP-KoL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          <p><small>Video source: Youtube.</small></p>
+        </section>
+      </main>
 
     <!-- Footer: same on every page -->
     <footer>
       <p>&copy; 2026 ElectroCocha. All rights reserved.</p>
       <a href="../index.html">Back to Home</a>
     </footer>
-    <script src="src/main.js"></script>
+    <script src="../src/main.js"></script>
+    <script src="../src/calculator.js"></script>
   </body>
 </html>
