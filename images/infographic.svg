@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600" font-family="system-ui, 'Segoe UI', Roboto, Arial, sans-serif">
+  <!-- ElectroCocha infographic. The same information is written as text on the home page. -->
+
+  <!-- Background and title -->
+  <rect width="800" height="600" rx="16" fill="#0f2a43"/>
+  <text x="40" y="56" fill="#9be564" font-size="15" font-weight="700" letter-spacing="2">ELECTROCOCHA INFOGRAPHIC</text>
+  <text x="40" y="94" fill="#ffffff" font-size="30" font-weight="700">Diesel or electric? An example in numbers</text>
+
+  <!-- Panel 1: the problem -->
+  <rect x="40" y="122" width="345" height="190" rx="12" fill="#ffffff"/>
+  <text x="64" y="156" fill="#555555" font-size="14" font-weight="700" letter-spacing="1.5">THE PROBLEM</text>
+  <text x="64" y="230" fill="#0f2a43" font-size="68" font-weight="800">160%+</text>
+  <text x="64" y="264" fill="#1a1a1a" font-size="17">rise in diesel prices after fuel</text>
+  <text x="64" y="288" fill="#1a1a1a" font-size="17">subsidies were removed (reported)</text>
+
+  <!-- Panel 2: cost per 100 km, as bars -->
+  <rect x="415" y="122" width="345" height="190" rx="12" fill="#ffffff"/>
+  <text x="439" y="156" fill="#555555" font-size="14" font-weight="700" letter-spacing="1.5">COST PER 100 KM</text>
+  <text x="439" y="190" fill="#1a1a1a" font-size="16" font-weight="700">Diesel</text>
+  <text x="736" y="190" fill="#1a1a1a" font-size="16" font-weight="700" text-anchor="end">Bs 150</text>
+  <rect x="439" y="200" width="297" height="20" rx="4" fill="#c4520f"/>
+  <text x="439" y="238" fill="#555555" font-size="13">30 litres × Bs 5 per litre</text>
+  <text x="439" y="266" fill="#1a1a1a" font-size="16" font-weight="700">Electric</text>
+  <text x="736" y="266" fill="#1a1a1a" font-size="16" font-weight="700" text-anchor="end">Bs 80</text>
+  <rect x="439" y="276" width="158" height="20" rx="4" fill="#3c8d2f"/>
+  <text x="608" y="291" fill="#555555" font-size="13">80 kWh × Bs 1 per kWh</text>
+
+  <!-- Panel 3: an example month -->
+  <rect x="40" y="332" width="345" height="200" rx="12" fill="#ffffff"/>
+  <text x="64" y="366" fill="#555555" font-size="14" font-weight="700" letter-spacing="1.5">AN EXAMPLE MONTH</text>
+  <text x="64" y="394" fill="#1a1a1a" font-size="16">100 km a day × 26 working days</text>
+  <text x="64" y="428" fill="#1a1a1a" font-size="18">Diesel</text>
+  <text x="361" y="428" fill="#1a1a1a" font-size="18" font-weight="700" text-anchor="end">Bs 3,900</text>
+  <text x="64" y="458" fill="#1a1a1a" font-size="18">Electric</text>
+  <text x="361" y="458" fill="#1a1a1a" font-size="18" font-weight="700" text-anchor="end">Bs 2,080</text>
+  <rect x="64" y="474" width="297" height="40" rx="8" fill="#9be564"/>
+  <text x="212" y="500" fill="#0f2a43" font-size="18" font-weight="800" text-anchor="middle">Saving: Bs 1,820 a month</text>
+
+  <!-- Panel 4: switching in four steps -->
+  <rect x="415" y="332" width="345" height="200" rx="12" fill="#ffffff"/>
+  <text x="439" y="366" fill="#555555" font-size="14" font-weight="700" letter-spacing="1.5">SWITCHING IN 4 STEPS</text>
+  <g font-size="16" fill="#1a1a1a">
+    <circle cx="453" cy="396" r="14" fill="#0f2a43"/>
+    <text x="453" y="401" fill="#9be564" font-weight="800" text-anchor="middle">1</text>
+    <text x="477" y="401">Compare your running costs</text>
+    <circle cx="453" cy="432" r="14" fill="#0f2a43"/>
+    <text x="453" y="437" fill="#9be564" font-weight="800" text-anchor="middle">2</text>
+    <text x="477" y="437">Check financing and incentives</text>
+    <circle cx="453" cy="468" r="14" fill="#0f2a43"/>
+    <text x="453" y="473" fill="#9be564" font-weight="800" text-anchor="middle">3</text>
+    <text x="477" y="473">Plan where you will charge</text>
+    <circle cx="453" cy="504" r="14" fill="#0f2a43"/>
+    <text x="453" y="509" fill="#9be564" font-weight="800" text-anchor="middle">4</text>
+    <text x="477" y="509">Talk to ElectroCocha</text>
+  </g>
+
+  <!-- Note about the values -->
+  <text x="40" y="568" fill="#c9d3dd" font-size="14">Example values only, not real prices. They leave out the vehicle price, maintenance and financing.</text>
+</svg>

@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 420" width="600" height="420">
+  <!-- Hero illustration: an electric bus charging in front of the mountains around Cochabamba -->
+
+  <!-- Sun -->
+  <circle cx="470" cy="100" r="50" fill="#9be564" opacity="0.9"/>
+
+  <!-- Mountains: back row, then front row -->
+  <path d="M0 300 90 190l80 60 90-100 100 90 90-70 150 120v40H0z" fill="#1d4466"/>
+  <path d="M0 320 120 240l100 60 110-80 110 70 80-40 80 60v30H0z" fill="#2a5a82"/>
+
+  <!-- Road with a dashed lime centre line -->
+  <rect x="0" y="336" width="600" height="84" fill="#0a1d2f"/>
+  <path d="M0 392H600" stroke="#9be564" stroke-width="4" stroke-dasharray="28 22" opacity="0.6"/>
+
+  <!-- Charging cable from the post to the bus -->
+  <path d="M472 300c-40 0-40 40-70 30s-6-40-12-50" fill="none" stroke="#f4f7fa" stroke-width="5" stroke-linecap="round"/>
+
+  <!-- Bus body and roof battery pack -->
+  <rect x="120" y="198" width="150" height="20" rx="6" fill="#c9d3dd"/>
+  <rect x="70" y="214" width="320" height="124" rx="20" fill="#f4f7fa"/>
+
+  <!-- Windows and windscreen -->
+  <g fill="#0f2a43">
+    <rect x="92" y="234" width="52" height="44" rx="6"/>
+    <rect x="154" y="234" width="52" height="44" rx="6"/>
+    <rect x="216" y="234" width="52" height="44" rx="6"/>
+    <rect x="278" y="234" width="40" height="44" rx="6"/>
+    <rect x="330" y="234" width="46" height="58" rx="8"/>
+  </g>
+
+  <!-- Lime stripe and lightning bolt badge -->
+  <rect x="70" y="292" width="320" height="10" fill="#9be564"/>
+  <path d="M232 306 218 322h9l-4 12 15-17h-9l4-11z" fill="#0f2a43"/>
+
+  <!-- Headlight -->
+  <rect x="370" y="310" width="14" height="9" rx="3" fill="#ffd166"/>
+
+  <!-- Wheels -->
+  <g>
+    <circle cx="135" cy="338" r="24" fill="#0a1d2f" stroke="#f4f7fa" stroke-width="4"/>
+    <circle cx="135" cy="338" r="9" fill="#9aa7b4"/>
+    <circle cx="322" cy="338" r="24" fill="#0a1d2f" stroke="#f4f7fa" stroke-width="4"/>
+    <circle cx="322" cy="338" r="9" fill="#9aa7b4"/>
+  </g>
+
+  <!-- Charging post with a small screen -->
+  <rect x="470" y="236" width="46" height="102" rx="8" fill="#9be564"/>
+  <rect x="480" y="250" width="26" height="22" rx="3" fill="#0f2a43"/>
+  <path d="M496 253 488 263h6l-2 6 8-10h-6l2-6z" fill="#9be564"/>
+</svg>
