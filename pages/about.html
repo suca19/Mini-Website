@@ -3,30 +3,168 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>About Us</title>
+    <meta
+      name="description"
+      content="Who is behind ElectroCocha, our mission, partners and disclaimer."
+    />
+    <title>ElectroCocha | About</title>
+    <!-- Small lightning bolt icon in the browser tab -->
+    <link rel="icon" href="../images/favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="../style/main.css" />
+    <!-- main.js runs first so the phone menu can start closed -->
+    <script src="../src/main.js"></script>
   </head>
   <body>
-    <!-- About page content -->
+    <!-- Skip link: lets keyboard users jump straight to the content -->
+    <a href="#main" class="skip-link">Skip to main content</a>
+
+    <!-- Header: same on every page -->
     <header>
-      <nav>
+      <nav aria-label="Main">
         <!-- Text logo: links back to the home page -->
         <a href="../index.html" class="logo">Electro<span>Cocha</span></a>
-        <!-- Navigation links: link to other pages -->
-        <a href="../index.html">Home</a>
-        <a href="solutions.html">Solutions</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-        <a href="account.html">Sign in</a>
+        <!-- Menu button: only shown on small screens when JavaScript is on -->
+        <button type="button" class="menu-button" aria-expanded="false" aria-controls="nav-links">
+          Menu
+        </button>
+        <!-- Navigation links. aria-current marks the page you are on -->
+        <ul id="nav-links" class="nav-links">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="solutions.html">Solutions</a></li>
+          <li><a href="about.html" aria-current="page">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="account.html">Sign in</a></li>
+        </ul>
       </nav>
     </header>
-    <main>
-      <h1>About</h1>
-      <p>This page is coming soon.</p>
+
+    <main id="main">
+      <!-- Page header: the mission in one line, with a button to the main tool -->
+      <section class="page-hero">
+        <p class="eyebrow">About us</p>
+        <h1>Keeping Cochabamba moving, with less fuel worry</h1>
+        <p>
+          We help transport workers and drivers understand what switching to
+          electric really means for them, in plain language.
+        </p>
+        <div class="button-row">
+          <a href="solutions.html#calculator" class="button">Try the cost calculator</a>
+        </div>
+      </section>
+
+      <!-- Mission, with a photo -->
+      <section>
+        <h2>Our mission</h2>
+        <figure>
+          <img
+            src="../images/electric-car.jpg"
+            alt="A white paper cut-out of an electric car with a plug, on green grass"
+            width="620"
+            height="354"
+            loading="lazy"
+          />
+          <figcaption>Electric, and ready to plug in.</figcaption>
+        </figure>
+        <p>
+          Our mission is to give the people who keep Cochabamba moving clear,
+          honest information about electric vehicles. We explain costs,
+          financing and incentives in plain language, so that bus and taxi
+          operators, drivers and commuters can make their own informed choice.
+        </p>
+        <p>
+          We do not tell anyone to switch. We help people work out whether
+          switching makes sense for them.
+        </p>
+      </section>
+
+      <!-- At a glance: three quick facts taken from the project plan -->
+      <section class="wide band">
+        <h2>ElectroCocha at a glance</h2>
+        <ul class="cards cards-3">
+          <li class="card stat">
+            <span class="card-number">160%+</span>
+            rise in diesel prices after fuel subsidies were removed (reported)
+          </li>
+          <li class="card stat">
+            <span class="card-number">3</span>
+            things we help you compare: costs, financing and incentives
+          </li>
+          <li class="card stat">
+            <span class="card-number">4</span>
+            groups we are built for: operators, drivers, commuters and local government
+          </li>
+        </ul>
+      </section>
+
+      <!-- How it works: three simple steps that match the site -->
+      <section>
+        <h2>How it works</h2>
+        <ol class="steps">
+          <li><strong>Enter your figures</strong> in the cost calculator.</li>
+          <li><strong>Compare</strong> diesel and electric running costs.</li>
+          <li><strong>Get in touch</strong> with your questions about financing and incentives.</li>
+        </ol>
+      </section>
+
+      <!-- Who is behind it (User9) -->
+      <section>
+        <h2>Who is behind ElectroCocha</h2>
+        <p>
+          ElectroCocha is a student prototype, designed and built as a college
+          web development project for a client in Cochabamba. It is not a
+          company, and it does not sell vehicles, loans or charging.
+        </p>
+        <p>
+          The project is built in short sprints. At the end of each one, the
+          client reviews the site and gives feedback, so it can keep up as fuel
+          policy and incentives change.
+        </p>
+      </section>
+
+      <!-- Partners: only real ones, or clearly marked as not confirmed -->
+      <section>
+        <h2>Partners</h2>
+        <p>
+          Partners are not confirmed yet. In the future we would like to work
+          with transport unions, local government, electricity providers and
+          vehicle sellers, so the information on this site can be checked and
+          kept up to date.
+        </p>
+      </section>
+
+      <!-- Disclaimer -->
+      <section>
+        <h2>Disclaimer</h2>
+        <p class="callout">
+          This site is a student prototype. Figures and proposals shown are
+          reported or illustrative and may change. Nothing on this site is
+          financial or legal advice.
+        </p>
+      </section>
+
+      <!-- Call to action: a clear next step -->
+      <section class="cta">
+        <h2>Ready to compare your costs?</h2>
+        <div class="button-row">
+          <a href="solutions.html#calculator" class="button">Open the calculator</a>
+          <a href="contact.html" class="button button-outline">Contact us</a>
+        </div>
+      </section>
     </main>
+
+    <!-- Footer: same on every page -->
     <footer>
-      <p>&copy; 2026 ElectroCocha. All rights reserved.</p>
+      <p class="footer-logo">Electro<span>Cocha</span></p>
+      <p>Helping Cochabamba understand the switch to electric.</p>
+      <ul class="footer-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="solutions.html">Solutions</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="account.html">Sign in</a></li>
+      </ul>
+      <p class="footer-note">Student prototype. Figures are examples and nothing here is financial advice.</p>
+      <p>&copy; 2026 ElectroCocha. <a href="../index.html">Back to Home</a></p>
     </footer>
-    <script src="../src/main.js"></script>
   </body>
 </html>
