@@ -1,3 +1,4 @@
+// account.js: checks the sign-in and sign-up forms and switches between them (no server)
 // It reuses isEmpty, isValidName, isValidEmail, showError and clearError from validation.js
 
 // Rule: the password has at least 8 characters
@@ -110,3 +111,28 @@ function handleSignUp(event) {
 // Connects each function to its form's submit event
 document.getElementById("signin-form").addEventListener("submit", handleSignIn);
 document.getElementById("signup-form").addEventListener("submit", handleSignUp);
+
+// Shows one form and hides the other.
+// "hidden" is an HTML attribute that removes an element from the page.
+function showForm(which) {
+  const showSignIn = (which === "signin");
+
+  document.getElementById("signin-section").hidden = !showSignIn;
+  document.getElementById("signup-section").hidden = showSignIn;
+
+  // aria-pressed marks the selected button (for screen readers and our CSS)
+  document.getElementById("show-signin").setAttribute("aria-pressed", showSignIn);
+  document.getElementById("show-signup").setAttribute("aria-pressed", !showSignIn);
+}
+
+// Connects each switch button to showForm
+document.getElementById("show-signin").addEventListener("click", function () {
+  showForm("signin");
+});
+document.getElementById("show-signup").addEventListener("click", function () {
+  showForm("signup");
+});
+
+// On load: show sign in and hide sign up.
+// This is done in JavaScript, so both forms stay visible if JavaScript is off.
+showForm("signin");

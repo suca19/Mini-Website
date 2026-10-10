@@ -3,90 +3,160 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contact Us</title>
+    <meta
+      name="description"
+      content="Send ElectroCocha a question about electric vehicle costs, financing or incentives."
+    />
+    <title>ElectroCocha | Contact</title>
+    <!-- Small lightning bolt icon in the browser tab -->
+    <link rel="icon" href="../images/favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="../style/main.css" />
+    <!-- main.js runs first so the phone menu can start closed -->
+    <script src="../src/main.js"></script>
   </head>
   <body>
-    <!-- Contact page content -->
+    <!-- Skip link: lets keyboard users jump straight to the content -->
+    <a href="#main" class="skip-link">Skip to main content</a>
+
+    <!-- Header: same on every page -->
     <header>
-      <nav>
+      <nav aria-label="Main">
         <!-- Text logo: links back to the home page -->
         <a href="../index.html" class="logo">Electro<span>Cocha</span></a>
-        <!-- Navigation links: link to other pages -->
-        <a href="../index.html">Home</a>
-        <a href="solutions.html">Solutions</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-        <a href="account.html">Sign in</a>
+        <!-- Menu button: only shown on small screens when JavaScript is on -->
+        <button type="button" class="menu-button" aria-expanded="false" aria-controls="nav-links">
+          Menu
+        </button>
+        <!-- Navigation links. aria-current marks the page you are on -->
+        <ul id="nav-links" class="nav-links">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="solutions.html">Solutions</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html" aria-current="page">Contact</a></li>
+          <li><a href="account.html">Sign in</a></li>
+        </ul>
       </nav>
     </header>
-    <main>
-      <h1>Contact us</h1>
 
-      <!-- novalidate: turns off the browser's own checks so OUR JavaScript does the validation -->
-      <form id="contact-form" novalidate>
-        <!-- Name -->
-        <label for="name">Name</label>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          aria-describedby="name-error"
-        />
-        <span class="error" id="name-error"></span>
+    <main id="main">
+      <!-- Page header -->
+      <section class="page-hero">
+        <p class="eyebrow">Contact</p>
+        <h1>Contact us</h1>
+        <p>
+          Ask about costs, financing or incentives. Tell us a little about your
+          vehicle and your route so we can give a useful answer.
+        </p>
+      </section>
 
-        <!-- Phone -->
-        <label for="phone">Phone</label>
-        <input
-          type="text"
-          id="phone"
-          name="phone"
-          aria-describedby="phone-error"
-        />
-        <span class="error" id="phone-error"></span>
+      <!-- The form on the left, helpful information on the right -->
+      <section class="wide">
+        <div class="contact-layout">
+          <div class="form-card">
+            <p class="hint">All fields are required.</p>
 
-        <!-- Email -->
-        <label for="email">Email</label>
-        <input
-          type="text"
-          id="email"
-          name="email"
-          aria-describedby="email-error"
-        />
-        <span class="error" id="email-error"></span>
+            <!-- novalidate: turns off the browser's own checks so OUR JavaScript does the validation -->
+            <form id="contact-form" novalidate>
+              <!-- Name -->
+              <label for="name">Name</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                autocomplete="name"
+                aria-describedby="name-error"
+              />
+              <span class="error" id="name-error"></span>
 
-        <!-- Query type -->
-        <label for="query">Query type</label>
-        <select id="query" name="query" aria-describedby="query-error">
-          <option value="">Choose one...</option>
-          <option value="general">General information</option>
-          <option value="costs">Vehicle costs and comparison</option>
-          <option value="financing">Financing options</option>
-          <option value="incentives">Incentives</option>
-          <option value="other">Other</option>
-        </select>
-        <span class="error" id="query-error"></span>
+              <!-- Phone: the hint tells people the rule before they type -->
+              <label for="phone">Phone</label>
+              <small class="hint" id="phone-hint">Numbers only, 9 or 10 digits.</small>
+              <input
+                type="text"
+                id="phone"
+                name="phone"
+                inputmode="numeric"
+                autocomplete="tel"
+                aria-describedby="phone-hint phone-error"
+              />
+              <span class="error" id="phone-error"></span>
 
-        <!-- Message -->
-        <label for="message">Message</label>
-        <textarea
-          id="message"
-          name="message"
-          rows="5"
-          aria-describedby="message-error"
-        ></textarea>
-        <span class="error" id="message-error"></span>
+              <!-- Email -->
+              <label for="email">Email</label>
+              <input
+                type="text"
+                id="email"
+                name="email"
+                inputmode="email"
+                autocomplete="email"
+                aria-describedby="email-error"
+              />
+              <span class="error" id="email-error"></span>
 
-        <button type="submit" class="button">Send</button>
-      </form>
+              <!-- Query type -->
+              <label for="query">Query type</label>
+              <select id="query" name="query" aria-describedby="query-error">
+                <option value="">Choose one...</option>
+                <option value="general">General information</option>
+                <option value="costs">Vehicle costs and comparison</option>
+                <option value="financing">Financing options</option>
+                <option value="incentives">Incentives</option>
+                <option value="other">Other</option>
+              </select>
+              <span class="error" id="query-error"></span>
 
-      <!-- Success message: shown by JavaScript after a valid submit -->
-      <p id="success" aria-live="polite"></p>
+              <!-- Message -->
+              <label for="message">Message</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="5"
+                aria-describedby="message-error"
+              ></textarea>
+              <span class="error" id="message-error"></span>
+
+              <button type="submit" class="button">Send</button>
+            </form>
+
+            <!-- Success message: shown by JavaScript after a valid submit -->
+            <p id="success" class="success" aria-live="polite"></p>
+          </div>
+
+          <!-- Side information: what happens next -->
+          <div>
+            <h3>What happens next?</h3>
+            <ol class="steps">
+              <li>We read your message and your query type.</li>
+              <li>We reply by phone or email, usually within a few working days.</li>
+              <li>If it helps, we go through the calculator with you.</li>
+            </ol>
+            <p class="callout">
+              This is a prototype: the form checks your details, but nothing is
+              sent anywhere.
+            </p>
+            <p>
+              Want to try the numbers first?
+              <a href="solutions.html#calculator">Use the cost calculator</a>.
+            </p>
+          </div>
+        </div>
+      </section>
     </main>
+
+    <!-- Footer: same on every page -->
     <footer>
-      <p>&copy; 2026 ElectroCocha. All rights reserved.</p>
+      <p class="footer-logo">Electro<span>Cocha</span></p>
+      <p>Helping Cochabamba understand the switch to electric.</p>
+      <ul class="footer-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="solutions.html">Solutions</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="account.html">Sign in</a></li>
+      </ul>
+      <p class="footer-note">Student prototype. Figures are examples and nothing here is financial advice.</p>
+      <p>&copy; 2026 ElectroCocha. <a href="../index.html">Back to Home</a></p>
     </footer>
-    <script src="../src/main.js"></script>
     <script src="../src/validation.js"></script>
   </body>
 </html>

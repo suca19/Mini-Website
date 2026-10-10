@@ -1,84 +1,121 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ElectroCocha | Sign in</title>
-  <link rel="stylesheet" href="../style/main.css">
-</head>
-<body>
-  <!-- Header: same on every page -->
-  <header>
-    <nav>
-      <a href="../index.html" class="logo">Electro<span>Cocha</span></a>
-      <a href="../index.html">Home</a>
-      <a href="solutions.html">Solutions</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-      <a href="account.html">Sign in</a>
-    </nav>
-  </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Sign in to ElectroCocha or create an account (prototype)." />
+    <title>ElectroCocha | Sign in</title>
+    <!-- Small lightning bolt icon in the browser tab -->
+    <link rel="icon" href="../images/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../style/main.css" />
+    <!-- main.js runs first so the phone menu can start closed -->
+    <script src="../src/main.js"></script>
+  </head>
+  <body>
+    <!-- Skip link: lets keyboard users jump straight to the content -->
+    <a href="#main" class="skip-link">Skip to main content</a>
 
-  <main>
-    <section>
-      <h1>Sign in or create an account</h1>
-      <p><small>Prototype only: no account is created and nothing is saved or sent. Please do not enter a real password.</small></p>
-    </section>
+    <!-- Header: same on every page -->
+    <header>
+      <nav aria-label="Main">
+        <!-- Text logo: links back to the home page -->
+        <a href="../index.html" class="logo">Electro<span>Cocha</span></a>
+        <!-- Menu button: only shown on small screens when JavaScript is on -->
+        <button type="button" class="menu-button" aria-expanded="false" aria-controls="nav-links">
+          Menu
+        </button>
+        <!-- Navigation links. aria-current marks the page you are on -->
+        <ul id="nav-links" class="nav-links">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="solutions.html">Solutions</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="account.html" aria-current="page">Sign in</a></li>
+        </ul>
+      </nav>
+    </header>
 
-    <div class="account-forms">
+    <main id="main">
+      <!-- Page header -->
+      <section class="page-hero">
+        <p class="eyebrow">Your account</p>
+        <h1>Sign in or create an account</h1>
+        <p>
+          Prototype only: no account is created and nothing is saved or sent.
+          Please do not enter a real password.
+        </p>
+      </section>
+
+      <!-- Switch: choose which form to show. aria-pressed tells screen readers which one is selected -->
+      <div class="switch" role="group" aria-label="Choose sign in or sign up">
+        <button type="button" id="show-signin" class="button" aria-controls="signin-section" aria-pressed="true">Sign in</button>
+        <button type="button" id="show-signup" class="button" aria-controls="signup-section" aria-pressed="false">Sign up</button>
+      </div>
+
       <!-- Sign-in form: novalidate so our own JavaScript checks the fields -->
-      <section>
-        <h2>Sign in</h2>
-        <form id="signin-form" novalidate>
-          <label for="signin-email">Email</label>
-          <input type="text" id="signin-email" autocomplete="email" aria-describedby="signin-email-error">
-          <span class="error" id="signin-email-error"></span>
+      <section id="signin-section">
+        <div class="form-card">
+          <h2>Sign in</h2>
+          <form id="signin-form" novalidate>
+            <label for="signin-email">Email</label>
+            <input type="text" id="signin-email" inputmode="email" autocomplete="email" aria-describedby="signin-email-error">
+            <span class="error" id="signin-email-error"></span>
 
-          <label for="signin-password">Password</label>
-          <input type="password" id="signin-password" autocomplete="current-password" aria-describedby="signin-password-error">
-          <span class="error" id="signin-password-error"></span>
+            <label for="signin-password">Password</label>
+            <input type="password" id="signin-password" autocomplete="current-password" aria-describedby="signin-password-error">
+            <span class="error" id="signin-password-error"></span>
 
-          <button type="submit" class="button">Sign in</button>
-        </form>
-        <p id="signin-success" aria-live="polite"></p>
+            <button type="submit" class="button">Sign in</button>
+          </form>
+          <p id="signin-success" class="success" aria-live="polite"></p>
+        </div>
       </section>
 
       <!-- Sign-up form -->
-      <section>
-        <h2>Sign up</h2>
-        <form id="signup-form" novalidate>
-          <label for="signup-name">Name</label>
-          <input type="text" id="signup-name" autocomplete="name" aria-describedby="signup-name-error">
-          <span class="error" id="signup-name-error"></span>
+      <section id="signup-section">
+        <div class="form-card">
+          <h2>Sign up</h2>
+          <form id="signup-form" novalidate>
+            <label for="signup-name">Name</label>
+            <input type="text" id="signup-name" autocomplete="name" aria-describedby="signup-name-error">
+            <span class="error" id="signup-name-error"></span>
 
-          <label for="signup-email">Email</label>
-          <input type="text" id="signup-email" autocomplete="email" aria-describedby="signup-email-error">
-          <span class="error" id="signup-email-error"></span>
+            <label for="signup-email">Email</label>
+            <input type="text" id="signup-email" inputmode="email" autocomplete="email" aria-describedby="signup-email-error">
+            <span class="error" id="signup-email-error"></span>
 
-          <label for="signup-password">Password (at least 8 characters)</label>
-          <input type="password" id="signup-password" autocomplete="new-password" aria-describedby="signup-password-error">
-          <span class="error" id="signup-password-error"></span>
+            <label for="signup-password">Password (at least 8 characters)</label>
+            <input type="password" id="signup-password" autocomplete="new-password" aria-describedby="signup-password-error">
+            <span class="error" id="signup-password-error"></span>
 
-          <label for="signup-confirm">Confirm password</label>
-          <input type="password" id="signup-confirm" autocomplete="new-password" aria-describedby="signup-confirm-error">
-          <span class="error" id="signup-confirm-error"></span>
+            <label for="signup-confirm">Confirm password</label>
+            <input type="password" id="signup-confirm" autocomplete="new-password" aria-describedby="signup-confirm-error">
+            <span class="error" id="signup-confirm-error"></span>
 
-          <button type="submit" class="button">Sign up</button>
-        </form>
-        <p id="signup-success" aria-live="polite"></p>
+            <button type="submit" class="button">Sign up</button>
+          </form>
+          <p id="signup-success" class="success" aria-live="polite"></p>
+        </div>
       </section>
-    </div>
-  </main>
+    </main>
 
-  <!-- Footer: same on every page -->
-  <footer>
-    <p>&copy; 2026 ElectroCocha. All rights reserved.</p>
-    <a href="../index.html">Back to Home</a>
-  </footer>
+    <!-- Footer: same on every page -->
+    <footer>
+      <p class="footer-logo">Electro<span>Cocha</span></p>
+      <p>Helping Cochabamba understand the switch to electric.</p>
+      <ul class="footer-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="solutions.html">Solutions</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="account.html">Sign in</a></li>
+      </ul>
+      <p class="footer-note">Student prototype. Figures are examples and nothing here is financial advice.</p>
+      <p>&copy; 2026 ElectroCocha. <a href="../index.html">Back to Home</a></p>
+    </footer>
 
-  <script src="../src/main.js"></script>
-  <!-- validation.js first: account.js reuses its functions -->
-  <script src="../src/validation.js"></script>
-  <script src="../src/account.js"></script>
-</body>
+    <!-- validation.js first: account.js reuses its functions -->
+    <script src="../src/validation.js"></script>
+    <script src="../src/account.js"></script>
+  </body>
 </html>
