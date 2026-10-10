@@ -7,9 +7,11 @@ function isEmpty(value) {
 }
 
 // Rule: letters and spaces only, no numbers or symbols.
-// The pattern ^[A-Za-z ]+$ means: from start to end, only letters or spaces.
+// The pattern means: from start to end, only letters or spaces.
+// Spanish letters (á é í ó ú ü ñ) count as letters, because many names
+// in Bolivia use them (for example José or Peña).
 function isValidName(value) {
-  return /^[A-Za-z ]+$/.test(value);
+  return /^[A-Za-zÁÉÍÓÚÜÑáéíóúüñ ]+$/.test(value);
 }
 
 // Rule: digits only, exactly 9 or 10 of them.
@@ -107,7 +109,7 @@ function validateForm(event) {
     document.getElementById("contact-form").reset();
   } else {
     // Move the cursor to the first field with an error (helps keyboard users)
-    document.querySelector('[aria-invalid="true"]').focus();
+    document.querySelector('#contact-form [aria-invalid="true"]').focus();
   }
 }
 
