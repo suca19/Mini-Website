@@ -1,49 +1,236 @@
-/* CSS Variables for consistent theming across the website */
+/* main.css: shared theme and layout for every ElectroCocha page
+
+   Contents:
+   1. Variables
+   2. Page defaults and typography
+   3. Page layout (one centred column, like a book page)
+   4. Skip link
+   5. Header and navigation
+   6. Hero, page headers and call-to-action bands
+   7. Buttons
+   8. Cards, callouts and steps
+   9. Footer
+   10. Keyboard focus
+   11. Forms
+   12. Calculator results
+   13. Images, infographic, audio, video and map
+   14. Sign in / sign up switch
+   15. Wide screens (media query)
+   16. Reduced motion
+*/
+
+/* ---------- 1. Variables ---------- */
 :root {
   --color-primary: #0f2a43; /* navy */
+  --color-primary-dark: #0a1d2f; /* darker navy for the footer and gradients */
   --color-accent: #9be564; /* lime */
   --color-bg: #ffffff;
+  --color-soft: #f2f5f8; /* light blue-grey panels */
   --color-text: #1a1a1a;
+  --color-muted: #555555; /* helper text: passes the contrast rule on white */
   --color-error: #b00020;
+  --color-success: #1e6b2c;
+  --color-line: #dde3ea; /* thin divider lines */
+  --color-diesel: #c4520f; /* orange bar in the calculator */
+  --color-electric: #3c8d2f; /* green bar in the calculator */
+
+  --font-serif: Georgia, "Times New Roman", serif; /* body text: book feel */
+  --font-sans: system-ui, "Segoe UI", Roboto, Arial, sans-serif; /* headings, nav, forms */
+
+  --text-width: 720px; /* width of the reading column */
+  --wide-width: 1100px; /* width of the header, footer and wide sections */
+  --space: 3.5rem; /* space above and below each section */
+  --radius: 10px; /* rounded corners */
+  --shadow: 0 6px 20px rgba(15, 42, 67, 0.08); /* soft shadow under cards */
+
+  /* Side space. On a wide screen it grows, so the content stays in the middle,
+     while coloured backgrounds still fill the whole width. */
+  --gutter: max(1.25rem, calc((100% - var(--text-width)) / 2));
+  --gutter-wide: max(1.25rem, calc((100% - var(--wide-width)) / 2));
 }
 
-/* ---------- Page defaults ---------- */
+/* ---------- 2. Page defaults and typography ---------- */
+html {
+  scroll-behavior: smooth; /* in-page links glide instead of jumping */
+  scroll-padding-top: 5rem; /* stops the sticky header covering the target */
+}
+
 body {
   margin: 0; /* remove the browser's default gap */
-  font-family: system-ui, "Segoe UI", Roboto, Arial, sans-serif;
+  font-family: var(--font-serif);
+  font-size: 1.125rem;
   color: var(--color-text);
   background-color: var(--color-bg);
-  line-height: 1.6; /* easier to read */
+  line-height: 1.75; /* airy lines, easy to read */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column; /* header, main and footer stacked */
 }
 
-/* ---------- Header and navigation ---------- */
+/* main takes the free space, so the footer stays at the bottom on short pages */
+main {
+  flex: 1;
+}
+
+/* Same heading style everywhere, so titles line up from page to page */
+h1,
+h2,
+h3 {
+  font-family: var(--font-sans);
+  color: var(--color-primary);
+  line-height: 1.2;
+  margin: 0 0 1rem;
+}
+
+h1,
+h2 {
+  text-align: center;
+}
+
+h1 {
+  font-size: 2.25rem;
+}
+
+h2 {
+  font-size: 1.75rem;
+}
+
+h3 {
+  font-size: 1.2rem;
+}
+
+/* Short lime line under each section title */
+h2::after {
+  content: "";
+  display: block;
+  width: 3rem;
+  height: 4px;
+  background-color: var(--color-accent);
+  margin: 0.6rem auto 0;
+  border-radius: 2px;
+}
+
+p,
+ul,
+ol {
+  margin: 0 0 1.25rem;
+}
+
+/* Links in the page: navy and underlined, so they are easy to spot */
+main a:not(.button) {
+  color: var(--color-primary);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+main a:not(.button):hover {
+  text-decoration-color: var(--color-accent);
+}
+
+/* Intro paragraph under a section title */
+.lead {
+  text-align: center;
+  max-width: 40rem;
+  margin-inline: auto;
+}
+
+/* Small uppercase label above a title */
+.eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: bold;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin: 0 0 0.5rem;
+}
+
+/* Fine print, like disclaimers */
+.note {
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  color: var(--color-muted);
+  text-align: center;
+}
+
+/* ---------- 3. Page layout (one centred column) ---------- */
+/* Every top-level section gets the same side space, so all content
+   lines up in one centred column. */
+main > section,
+main > .switch {
+  padding-inline: var(--gutter);
+}
+
+/* A wider column, for sections with cards side by side */
+main > section.wide {
+  padding-inline: var(--gutter-wide);
+}
+
+/* Same space above and below every section (this aligns the titles) */
+main > section {
+  padding-block: var(--space);
+}
+
+/* Thin line between sections, like chapters in a book */
+main > section + section {
+  border-top: 1px solid var(--color-line);
+}
+
+/* A section with a light background, to break up long pages */
+main > section.band {
+  background-color: var(--color-soft);
+  border-top: none;
+}
+
+main > section.band + section {
+  border-top: none;
+}
+
+/* ---------- 4. Skip link ---------- */
+/* Hidden above the page until a keyboard user tabs to it */
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  z-index: 100;
+  padding: 0.5rem 1rem;
+  background-color: var(--color-accent);
+  color: var(--color-primary);
+  font-family: var(--font-sans);
+  font-weight: bold;
+  border-radius: 4px;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+/* ---------- 5. Header and navigation ---------- */
+/* sticky: the header stays at the top while the page scrolls */
 header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
   background-color: var(--color-primary);
   border-bottom: 4px solid var(--color-accent); /* lime line under the header */
 }
 
 nav {
-  display: flex; /* puts the links in a row */
+  font-family: var(--font-sans);
+  display: flex; /* puts the logo and links in a row */
   flex-wrap: wrap; /* lets them wrap on small screens */
-  gap: 1rem;
+  gap: 0.5rem 1rem;
   align-items: center;
-  padding: 0.75rem 1rem;
+  padding: 0.75rem var(--gutter-wide);
 }
 
-nav a {
-  color: #ffffff; /* white links on navy */
-  text-decoration: none;
-}
-/* Padding for headings and text placed directly in main (pages without sections) */
-main > h1,
-main > p {
-  padding: 0 1rem;
-}
-/* ---------- Text logo ---------- */
+/* Text logo */
 .logo {
   color: #ffffff; /* "Electro" in white */
+  font-family: var(--font-sans);
   font-size: 1.5rem;
   font-weight: bold;
+  text-decoration: none;
   margin-right: auto; /* pushes the other links to the right */
 }
 
@@ -51,85 +238,404 @@ main > p {
   color: var(--color-accent); /* "Cocha" in lime */
 }
 
-/* ---------- Main content ---------- */
-main section {
-  padding: 2rem 1rem;
+/* The list of links */
+.nav-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.5rem;
 }
 
-.hero {
-  background-color: var(--color-primary);
+.nav-links a {
+  display: block;
+  color: #ffffff; /* white links on navy */
+  text-decoration: none;
+  padding: 0.25rem 0;
+  border-bottom: 3px solid transparent; /* space for the underline below */
+}
+
+.nav-links a:hover {
+  border-bottom-color: rgba(255, 255, 255, 0.5);
+}
+
+/* The page you are on gets a lime underline (aria-current is set in the HTML) */
+.nav-links a[aria-current="page"] {
+  border-bottom-color: var(--color-accent);
+}
+
+/* Menu button: hidden unless JavaScript is on and the screen is small */
+.menu-button {
+  display: none;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: bold;
   color: #ffffff;
-  padding: 3rem 1rem;
+  background-color: transparent;
+  border: 2px solid #ffffff;
+  border-radius: 4px;
+  padding: 0.35rem 0.9rem;
+  cursor: pointer;
 }
 
-/* ---------- Button (call to action) ---------- */
+/* main.js adds the class "js" to <html>. Only then is the phone menu collapsed,
+   so without JavaScript every link is still visible. */
+.js .menu-button {
+  display: inline-block;
+}
+
+.js .nav-links {
+  display: none;
+  width: 100%; /* the open menu drops onto its own line */
+  flex-direction: column;
+  padding-bottom: 0.5rem;
+}
+
+.js .nav-links.open {
+  display: flex;
+}
+
+/* ---------- 6. Hero, page headers and call-to-action bands ---------- */
+.hero,
+.page-hero,
+.cta {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  color: #ffffff;
+  text-align: center;
+}
+
+/* Home page hero: text and an illustration */
+main > section.hero {
+  padding-block: 3.5rem;
+  padding-inline: var(--gutter-wide);
+}
+
+.hero-inner {
+  display: grid;
+  gap: 2rem;
+  align-items: center;
+}
+
+.hero h1,
+.page-hero h1,
+.cta h2 {
+  color: #ffffff;
+}
+
+.hero p:not(.eyebrow),
+.page-hero p:not(.eyebrow),
+.cta p {
+  max-width: 36rem;
+  margin: 0 auto 1.5rem; /* centres the paragraph inside the band */
+}
+
+.hero img {
+  display: block;
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+/* Buttons sit side by side and wrap on small screens */
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+/* Sections that follow a coloured band do not need a divider */
+.hero + section,
+.page-hero + section,
+.cta + section {
+  border-top: none;
+}
+
+/* In-page links under a page title (for example "Jump to: Calculator") */
+.page-links {
+  list-style: none;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+}
+
+.page-hero .page-links a {
+  display: inline-block;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 0.3rem 0.9rem;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 999px; /* pill shape */
+}
+
+.page-hero .page-links a:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+/* ---------- 7. Buttons ---------- */
 .button {
   display: inline-block;
   padding: 0.75rem 1.5rem;
   background-color: var(--color-accent); /* lime */
-  color: var(--color-text); /* dark text on lime */
+  color: var(--color-primary); /* dark text on lime */
   text-decoration: none;
   font-weight: bold;
-  font-family: inherit; /* real <button> tags need this to match the page font */
+  font-family: var(--font-sans);
   font-size: 1rem;
-  border: none; /* removes the default grey border on <button> */
-  border-radius: 4px;
+  border: 2px solid var(--color-accent);
+  border-radius: 6px;
   cursor: pointer;
-  justify-self: start; /* inside a form grid: keeps the button its natural width */
+  transition: transform 0.15s, box-shadow 0.15s;
 }
 
-/* ---------- Footer ---------- */
-footer {
-  background-color: var(--color-primary);
+/* Lifts the button a little when the mouse is over it */
+.button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+}
+
+/* Outlined button for dark bands (white border, white text) */
+.button-outline {
+  background-color: transparent;
   color: #ffffff;
-  padding: 1rem;
+  border-color: #ffffff;
+}
+
+/* Outlined button for white areas (navy border, navy text) */
+.button-secondary {
+  background-color: #ffffff;
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+/* ---------- 8. Cards, callouts and steps ---------- */
+.cards {
+  list-style: none; /* removes the bullet points */
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1.25rem; /* one column on phones */
+}
+
+.card {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.55;
+  background-color: #ffffff;
+  border: 1px solid var(--color-line);
+  border-top: 4px solid var(--color-accent); /* lime line on top */
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+}
+
+.card h3 {
+  margin-bottom: 0.5rem;
+}
+
+.card p:last-child,
+.card ul:last-child {
+  margin-bottom: 0;
+}
+
+/* Icon at the top of a card */
+.card-icon {
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+/* Space between a grid of cards and a note under it */
+.cards + .note {
+  margin-top: 1.5rem;
+}
+
+/* Small "Read more" link at the bottom of a card */
+.card-link {
+  font-weight: bold;
+}
+
+/* A card that shows one big number */
+.stat {
+  text-align: center;
+}
+
+.card-number {
+  display: block;
+  font-size: 2.25rem;
+  font-weight: bold;
+  line-height: 1.2;
+  color: var(--color-primary);
+}
+
+/* Highlighted box with a lime bar on the left */
+.callout {
+  font-family: var(--font-sans);
+  background-color: var(--color-soft);
+  border-left: 6px solid var(--color-accent);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: 1.25rem 1.5rem;
+  margin: 0 0 1.5rem;
+}
+
+.callout strong {
+  display: block;
+  font-size: 2.5rem;
+  line-height: 1.1;
+  color: var(--color-primary);
+}
+
+/* Numbered steps with lime circles instead of plain numbers */
+.steps {
+  list-style: none;
+  counter-reset: step; /* starts a counter at 0 */
+  margin: 0 0 1.25rem;
+  padding: 0;
+  display: grid;
+  gap: 1rem;
+  font-family: var(--font-sans);
+}
+
+.steps li {
+  counter-increment: step; /* adds 1 for each step */
+  position: relative;
+  padding-left: 3.5rem;
+  min-height: 2.5rem;
+}
+
+.steps li::before {
+  content: counter(step);
+  position: absolute;
+  left: 0;
+  top: -0.2rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background-color: var(--color-accent);
+  color: var(--color-primary);
+  font-weight: bold;
+  display: grid;
+  place-items: center; /* centres the number in the circle */
+}
+
+/* Show more / show less boxes (used for transcripts) */
+details {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  background-color: var(--color-soft);
+  border-radius: var(--radius);
+  padding: 0.75rem 1.25rem;
+  margin: 0 auto 1.25rem;
+  max-width: 40rem;
+}
+
+summary {
+  font-weight: bold;
+  color: var(--color-primary);
+  cursor: pointer;
+}
+
+details[open] summary {
+  margin-bottom: 0.75rem;
+}
+
+/* ---------- 9. Footer ---------- */
+footer {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  background-color: var(--color-primary-dark);
+  color: #ffffff;
+  padding: 2.5rem var(--gutter-wide) 1.5rem;
+  text-align: center;
+}
+
+footer p {
+  margin: 0 0 0.5rem;
+}
+
+.footer-logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.footer-logo span {
+  color: var(--color-accent);
+}
+
+.footer-links {
+  list-style: none;
+  margin: 1rem 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem 1.5rem;
 }
 
 footer a {
   color: var(--color-accent); /* lime link on navy: readable */
 }
 
-a:focus,
-button:focus {
+/* Fine print in the footer: light grey on dark navy */
+.footer-note {
+  color: #c9d3dd;
+  font-size: 0.875rem;
+}
+
+/* ---------- 10. Keyboard focus ---------- */
+/* :focus-visible shows the outline for keyboard users, not on every mouse click */
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible {
   outline: 3px solid var(--color-accent);
   outline-offset: 2px;
 }
 
-/* ---------- Responsive layout ---------- */
-/* Phone: the rules above (one column) apply by default.
-   The rules below only apply on screens at least 768px wide. */
-@media (min-width: 768px) {
-  /* Put the three content sections side by side */
-  .columns {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* three equal columns */
-    gap: 1rem;
-    max-width: 1100px; /* stops it getting too wide */
-    margin: 0 auto; /* centres it on the page */
-    padding: 0 1rem;
-  }
-
-  /* Bigger hero text and spacing */
-  .hero {
-    padding: 4rem 2rem;
-  }
-
-  .hero p {
-    max-width: 40rem; /* keeps long lines readable */
-    font-size: 1.2rem;
-  }
-
-  /* More room in the header */
-  nav {
-    padding: 1rem 2rem;
-  }
+/* On the white page area a lime outline is faint, so use navy there */
+main a:focus-visible,
+main button:focus-visible,
+main summary:focus-visible {
+  outline-color: var(--color-primary);
 }
 
-/* ---------- Contact form ---------- */
+/* Inside the dark bands, go back to lime */
+.hero a:focus-visible,
+.page-hero a:focus-visible,
+.cta a:focus-visible {
+  outline-color: var(--color-accent);
+}
+
+/* ---------- 11. Forms (contact, calculator, sign in, sign up) ---------- */
 form {
+  font-family: var(--font-sans);
+  font-size: 1rem;
   display: grid;
-  gap: 0.5rem;
+  gap: 0.4rem;
+  width: 100%;
   max-width: 32rem;
+  margin-inline: auto; /* centres the form in the column */
+}
+
+/* White box with a shadow around a form */
+.form-card {
+  background-color: #ffffff;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.5rem;
+  max-width: 32rem;
+  margin: 0 auto 1.5rem;
+  box-sizing: border-box; /* padding counts inside the width */
+}
+
+.form-card form {
+  max-width: none;
 }
 
 label {
@@ -140,13 +646,29 @@ label {
 input,
 select,
 textarea {
-  padding: 0.5rem;
+  padding: 0.6rem;
   font-size: 1rem;
+  font-family: inherit;
+  border: 1px solid #8a96a3; /* grey border: 3:1 contrast against white */
+  border-radius: 6px;
+}
+
+form .button {
+  justify-self: start; /* keeps the button its natural width inside the grid */
+  margin-top: 1rem;
+}
+
+/* Two buttons next to each other inside a form */
+.form-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
 }
 
 /* Error text: red AND words, so it never relies on colour alone */
 .error {
   color: var(--color-error);
+  font-size: 0.9rem;
   min-height: 1.2em; /* keeps the layout from jumping */
 }
 
@@ -162,19 +684,113 @@ textarea:focus {
   outline-offset: 2px;
 }
 
-/* ---------- Calculator results and media ---------- */
-#calc-result {
-  margin-top: 1rem;
-  padding: 1rem;
+/* Small helper text under a label */
+.hint {
+  color: var(--color-muted);
+  font-size: 0.875rem;
+}
+
+/* Success message after a valid form: green box with a tick */
+.success {
+  font-family: var(--font-sans);
   max-width: 32rem;
-  border-left: 4px solid var(--color-accent); /* lime bar */
-  background-color: #f2f5f8;
+  margin: 1rem auto 0;
+  padding: 0.75rem 1rem;
+  color: var(--color-success);
+  background-color: #e9f7e1;
+  border-left: 5px solid var(--color-electric);
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.success::before {
+  content: "\2713  "; /* tick symbol */
+  font-weight: bold;
+}
+
+/* Hidden until JavaScript writes a message into it */
+.success:empty {
+  display: none;
+}
+
+/* Contact page: the form and the side information */
+.contact-layout {
+  display: grid;
+  gap: 2rem;
+  align-items: start;
+}
+
+.contact-layout .form-card {
+  margin: 0;
+  max-width: none;
+}
+
+/* ---------- 12. Calculator results ---------- */
+#calc-result {
+  font-family: var(--font-sans);
+  margin: 1.5rem auto 0;
+  padding: 1.25rem 1.5rem;
+  max-width: 32rem;
+  border-left: 5px solid var(--color-accent); /* lime bar */
+  border-radius: 0 var(--radius) var(--radius) 0;
+  background-color: var(--color-soft);
+  box-sizing: border-box;
 }
 
 #calc-result:empty {
   display: none; /* hides the box until there are results */
 }
 
+#calc-result h3 {
+  text-align: center;
+}
+
+/* One row of the bar chart: label, bar, amount */
+.bar-row {
+  display: grid;
+  grid-template-columns: 5rem 1fr auto;
+  gap: 0.75rem;
+  align-items: center;
+  margin-bottom: 0.6rem;
+}
+
+.bar-label {
+  font-weight: bold;
+}
+
+/* The grey track the coloured bar grows in */
+.bar {
+  height: 1rem;
+  background-color: #dde3ea;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+/* The coloured part: its width is set by calculator.js */
+.bar-fill {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+}
+
+.bar-diesel {
+  background-color: var(--color-diesel);
+}
+
+.bar-electric {
+  background-color: var(--color-electric);
+}
+
+.bar-value {
+  font-weight: bold;
+  white-space: nowrap; /* keeps "Bs 1,000.00" on one line */
+}
+
+.result-summary {
+  margin: 1rem 0 0.5rem;
+}
+
+/* ---------- 13. Images, infographic, audio, video and map ---------- */
 /* Media never wider than the screen */
 video,
 img {
@@ -182,28 +798,205 @@ img {
   height: auto;
 }
 
-/* Small helper text under a calculator label */
-.hint {
-  color: #555555; /* dark grey: passes the contrast rule on white */
-  font-size: 0.875rem;
-}
-/* ---------- Sign in / sign up: forms stacked on phones, side by side on wide screens ---------- */
-.account-forms {
-  display: grid;
-  gap: 2rem;
+figure {
+  margin: 0 0 1.5rem;
 }
 
+figure img {
+  display: block;
+  margin: 0 auto;
+  border-radius: var(--radius);
+}
+
+figcaption {
+  text-align: center;
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  color: var(--color-muted);
+  margin-top: 0.5rem;
+}
+
+/* The infographic image gets a soft shadow */
+.infographic img {
+  box-shadow: var(--shadow);
+}
+
+/* Audio player: full width of the column, centred */
+audio {
+  display: block;
+  width: 100%;
+  max-width: 32rem;
+  margin: 0 auto 1rem;
+}
+
+/* Embedded video and map: fit the screen, keep their shape, centred */
+.video,
+.map {
+  display: block;
+  width: 100%;
+  border: 0;
+  border-radius: var(--radius);
+  margin: 0 auto 1.25rem;
+  box-shadow: var(--shadow);
+}
+
+.video {
+  max-width: 640px;
+  aspect-ratio: 16 / 9;
+}
+
+.map {
+  aspect-ratio: 4 / 3;
+}
+
+/* Example charging locations listed next to the map */
+.station-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+}
+
+.station-list li {
+  padding: 0.6rem 0 0.6rem 1.75rem;
+  border-bottom: 1px solid var(--color-line);
+  position: relative;
+}
+
+/* Small lime dot in front of each location, like a map pin */
+.station-list li::before {
+  content: "";
+  position: absolute;
+  left: 0.25rem;
+  top: 1.05rem;
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+  background-color: var(--color-accent);
+  border: 2px solid var(--color-primary);
+}
+
+/* Map and list side by side on wide screens */
+.map-layout {
+  display: grid;
+  gap: 1.5rem;
+}
+
+/* ---------- 14. Sign in / sign up switch ---------- */
+.switch {
+  display: flex;
+  justify-content: center; /* buttons in the middle */
+  gap: 0.5rem;
+  padding-top: 2rem;
+}
+
+/* Less space between the switch and the form that follows it */
+.switch + section {
+  padding-top: 1.5rem;
+  border-top: none;
+}
+
+/* The hidden form is removed, so the visible one needs no divider either */
+.switch ~ section {
+  border-top: none;
+}
+
+/* Both buttons get a navy border so they keep the same size */
+.switch .button {
+  border: 2px solid var(--color-primary);
+}
+
+/* The button that is NOT selected looks outlined (white with navy text) */
+.switch .button[aria-pressed="false"] {
+  background-color: #ffffff;
+  color: var(--color-primary);
+}
+
+/* ---------- 15. Wide screens ---------- */
+/* Phone: the rules above (one column) apply by default.
+   The rules below only apply on screens at least 768px wide. */
 @media (min-width: 768px) {
-  .account-forms {
-    grid-template-columns: 1fr 1fr;
-    max-width: 1100px;
-    margin: 0 auto;
+  h1 {
+    font-size: 2.75rem;
+  }
+
+  /* Show all links in a row and hide the Menu button */
+  .js .menu-button {
+    display: none;
+  }
+
+  .js .nav-links {
+    display: flex;
+    width: auto;
+    flex-direction: row;
+    padding-bottom: 0;
+  }
+
+  /* Home hero: text on the left, illustration on the right */
+  .hero-inner {
+    grid-template-columns: 1.1fr 1fr;
+    text-align: left;
+  }
+
+  .hero h1 {
+    font-size: 3rem;
+    text-align: left;
+  }
+
+  .hero p:not(.eyebrow) {
+    font-size: 1.2rem;
+    margin-left: 0;
+  }
+
+  .hero .button-row {
+    justify-content: flex-start;
+  }
+
+  /* Card grids: 2, 3 or 4 cards in a row */
+  .cards-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .cards-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .cards-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Contact page: form on the left, information on the right */
+  .contact-layout {
+    grid-template-columns: 3fr 2fr;
+  }
+
+  /* Map on the left, list of locations on the right */
+  .map-layout {
+    grid-template-columns: 3fr 2fr;
+    align-items: start;
   }
 }
-/* Embedded video: fits the screen and keeps a 16:9 shape */
-.video {
-  width: 100%;
-  max-width: 560px;
-  aspect-ratio: 16 / 9;
-  border: 0;
+
+/* Very wide screens: four cards in a row */
+@media (min-width: 1000px) {
+  .cards-4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ---------- 16. Reduced motion ---------- */
+/* Some people get dizzy from movement, so turn the animations off for them */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .button {
+    transition: none;
+  }
+
+  .button:hover {
+    transform: none;
+  }
 }
