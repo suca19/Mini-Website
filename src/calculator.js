@@ -41,23 +41,49 @@ function calculateCosts(distance, days, dieselUse, dieselPrice, evUse, evPrice) 
   };
 }
 
-// Writes the results on the page, rounded to 2 decimals
+// Formats a number as money in bolivianos with 2 decimals, e.g. "Bs 1,820.00"
+function formatBs(amount) {
+  return "Bs " + amount.toLocaleString("en-US", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
+  });
+}
+
+// Builds one row of the bar chart: a label, a coloured bar and the amount.
+// width is a percentage (0 to 100) of the full bar.
+function barRow(label, amount, width, className) {
+  return '<div class="bar-row">' +
+    '<span class="bar-label">' + label + '</span>' +
+    '<span class="bar"><span class="bar-fill ' + className + '" style="width: ' + width.toFixed(1) + '%"></span></span>' +
+    '<span class="bar-value">' + formatBs(amount) + '</span>' +
+    '</div>';
+}
+
+// Writes the results on the page, as a small bar chart plus a sentence
 function showResult(result) {
   let summary;
   if (result.monthlySaving > 0) {
-    summary = "Electric saves you " + result.monthlySaving.toFixed(2) + " per month.";
+    summary = "Electric saves you " + formatBs(result.monthlySaving) + " a month, about " +
+      formatBs(result.yearlySaving) + " a year.";
   } else if (result.monthlySaving < 0) {
-    summary = "With these figures, electric costs " + Math.abs(result.monthlySaving).toFixed(2) + " MORE per month.";
+    // Math.abs() removes the minus sign, so the sentence reads naturally
+    summary = "With these figures, electric costs " + formatBs(Math.abs(result.monthlySaving)) +
+      " more a month, about " + formatBs(Math.abs(result.yearlySaving)) + " a year.";
   } else {
     summary = "With these figures, both cost the same.";
   }
 
+  // The bigger cost fills the whole bar; the other one is a share of it
+  const biggest = Math.max(result.dieselCost, result.electricCost);
+  const dieselWidth = result.dieselCost / biggest * 100;
+  const electricWidth = result.electricCost / biggest * 100;
+
   document.getElementById("calc-result").innerHTML =
-    "<h3>Results (per month)</h3>" +
-    "<p>Diesel: " + result.dieselCost.toFixed(2) + "</p>" +
-    "<p>Electric: " + result.electricCost.toFixed(2) + "</p>" +
-    "<p><strong>" + summary + "</strong></p>" +
-    "<p>Over 12 months: " + result.yearlySaving.toFixed(2) + "</p>";
+    "<h3>Your monthly running costs</h3>" +
+    barRow("Diesel", result.dieselCost, dieselWidth, "bar-diesel") +
+    barRow("Electric", result.electricCost, electricWidth, "bar-electric") +
+    '<p class="result-summary"><strong>' + summary + "</strong></p>" +
+    '<p class="hint">This only covers energy. It does not include the price of the vehicle, maintenance or financing.</p>';
 }
 
 // Runs when the user clicks Calculate

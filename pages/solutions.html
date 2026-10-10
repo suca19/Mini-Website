@@ -3,50 +3,121 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Solutions</title>
+    <meta
+      name="description"
+      content="Electric vehicle options, a diesel vs electric cost calculator, financing, incentives and charging in Cochabamba."
+    />
+    <title>ElectroCocha | Solutions</title>
+    <!-- Small lightning bolt icon in the browser tab -->
+    <link rel="icon" href="../images/favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="../style/main.css" />
+    <!-- main.js runs first so the phone menu can start closed -->
+    <script src="../src/main.js"></script>
   </head>
   <body>
-    <!-- Solutions page content -->
+    <!-- Skip link: lets keyboard users jump straight to the content -->
+    <a href="#main" class="skip-link">Skip to main content</a>
+
+    <!-- Header: same on every page -->
     <header>
-      <nav>
+      <nav aria-label="Main">
         <!-- Text logo: links back to the home page -->
         <a href="../index.html" class="logo">Electro<span>Cocha</span></a>
-        <!-- Navigation links: link to other pages -->
-        <a href="../index.html">Home</a>
-        <a href="solutions.html">Solutions</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-        <a href="account.html">Sign in</a>
+        <!-- Menu button: only shown on small screens when JavaScript is on -->
+        <button type="button" class="menu-button" aria-expanded="false" aria-controls="nav-links">
+          Menu
+        </button>
+        <!-- Navigation links. aria-current marks the page you are on -->
+        <ul id="nav-links" class="nav-links">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="solutions.html" aria-current="page">Solutions</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="account.html">Sign in</a></li>
+        </ul>
       </nav>
     </header>
-    <main>
-        <!-- Intro -->
-        <section>
-          <h1>Solutions</h1>
-          <p>
-            Electric vehicles are one way to reduce a transport business's
-            dependence on diesel. On this page you can compare running costs,
-            see the possible benefits, and watch a short introduction.
-          </p>
-        </section>
-        <section>
-          <h2>Cost calculator</h2>
-          <p>
-            <small
-              >these are example values.</small
-            >
-          </p>
 
+    <main id="main">
+      <!-- Page header: title, intro and links to each part of this page -->
+      <section class="page-hero">
+        <p class="eyebrow">Solutions</p>
+        <h1>Your options for going electric</h1>
+        <p>
+          Electric vehicles are one way to reduce a transport business's
+          dependence on diesel. Compare running costs, look at the options and
+          find out where you could charge.
+        </p>
+        <!-- In-page links: each one jumps to a section with the same id -->
+        <ul class="page-links" aria-label="On this page">
+          <li><a href="#options">EV options</a></li>
+          <li><a href="#calculator">Cost calculator</a></li>
+          <li><a href="#benefits">Benefits</a></li>
+          <li><a href="#financing">Financing and incentives</a></li>
+          <li><a href="#charging">Charging</a></li>
+          <li><a href="#video">Video</a></li>
+        </ul>
+      </section>
+
+      <!-- EV options: the main kinds of electric vehicle for our users -->
+      <section id="options" class="wide">
+        <h2>Electric vehicle options</h2>
+        <p class="lead">Different jobs need different vehicles. These are the main options.</p>
+        <ul class="cards cards-3">
+          <li class="card">
+            <img src="../images/icons/bus.svg" alt="" class="card-icon" width="48" height="48" />
+            <h3>Electric buses and minibuses</h3>
+            <p>For micro and trufi operators who drive set routes every day.</p>
+            <ul>
+              <li>Fixed routes make charging easy to plan</li>
+              <li>Usually charged overnight at a depot</li>
+              <li>Highest price, but the biggest fuel savings</li>
+            </ul>
+          </li>
+          <li class="card">
+            <img src="../images/icons/car.svg" alt="" class="card-icon" width="48" height="48" />
+            <h3>Electric cars and taxis</h3>
+            <p>For taxi drivers and private drivers.</p>
+            <ul>
+              <li>Can often charge from a home socket</li>
+              <li>Quiet and simple to drive</li>
+              <li>Check the range against your longest day</li>
+            </ul>
+          </li>
+          <li class="card">
+            <img src="../images/icons/motorbike.svg" alt="" class="card-icon" width="48" height="48" />
+            <h3>Electric motorbikes</h3>
+            <p>For deliveries and short trips around the city.</p>
+            <ul>
+              <li>Lowest purchase price</li>
+              <li>Some have batteries you can take out and charge indoors</li>
+              <li>Best for short distances</li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Cost calculator (User6) -->
+      <section id="calculator" class="band">
+        <h2>Cost calculator</h2>
+        <p class="lead">
+          Enter your own figures to compare a month of diesel and electric
+          running costs. Prices are in bolivianos (Bs).
+        </p>
+
+        <div class="form-card">
+          <!-- novalidate: our JavaScript checks the fields, not the browser -->
           <form id="calc-form" novalidate>
             <label for="distance">Distance driven per day (km)</label>
             <small class="hint" id="distance-hint"
               >Roughly how far the vehicle drives on a normal working day. Tip:
               route length x number of trips.</small
             >
+            <!-- inputmode="decimal" shows a number keyboard on phones -->
             <input
               type="text"
               id="distance"
+              inputmode="decimal"
               aria-describedby="distance-hint distance-error"
             />
             <span class="error" id="distance-error"></span>
@@ -58,6 +129,7 @@
             <input
               type="text"
               id="days"
+              inputmode="decimal"
               aria-describedby="days-hint days-error"
             />
             <span class="error" id="days-error"></span>
@@ -70,17 +142,19 @@
             <input
               type="text"
               id="diesel-use"
+              inputmode="decimal"
               aria-describedby="diesel-use-hint diesel-use-error"
             />
             <span class="error" id="diesel-use-error"></span>
 
-            <label for="diesel-price">Diesel price (per litre)</label>
+            <label for="diesel-price">Diesel price (Bs per litre)</label>
             <small class="hint" id="diesel-price-hint"
               >Use the price on your last fuel receipt.</small
             >
             <input
               type="text"
               id="diesel-price"
+              inputmode="decimal"
               aria-describedby="diesel-price-hint diesel-price-error"
             />
             <span class="error" id="diesel-price-error"></span>
@@ -92,67 +166,178 @@
             <input
               type="text"
               id="ev-use"
+              inputmode="decimal"
               aria-describedby="ev-use-hint ev-use-error"
             />
             <span class="error" id="ev-use-error"></span>
 
-            <label for="ev-price">Electricity price (per kWh)</label>
+            <label for="ev-price">Electricity price (Bs per kWh)</label>
             <small class="hint" id="ev-price-hint"
               >Use the price per kWh on your electricity bill.</small
             >
             <input
               type="text"
               id="ev-price"
+              inputmode="decimal"
               aria-describedby="ev-price-hint ev-price-error"
             />
             <span class="error" id="ev-price-error"></span>
 
-            <button type="submit" class="button">Calculate</button>
-            <!-- type="button" so it fills the form without submitting it -->
-            <button type="button" id="example-button" class="button">
-              Use example values
-            </button>
+            <div class="form-buttons">
+              <button type="submit" class="button">Calculate</button>
+              <!-- type="button" so it fills the form without submitting it -->
+              <button type="button" id="example-button" class="button button-secondary">
+                Use example values
+              </button>
+            </div>
           </form>
-          <p>
-            <small>Example values are illustrative, not real prices.</small>
-          </p>
+
           <!-- Results appear here; aria-live makes screen readers announce them -->
           <div id="calc-result" aria-live="polite"></div>
-        </section>
-        <!-- Benefits -->
-        <section>
-          <h2>Possible benefits</h2>
-          <ul>
-            <li>
-              <strong>Lower running costs:</strong> use the calculator to
-              compare with your own figures.
-            </li>
-            <li>
-              <strong>Less dependence on fuel supply:</strong> electric vehicles
-              do not need diesel or petrol.
-            </li>
-            <li>
-              <strong>Financing and incentives:</strong> financing schemes and
-              tax incentives have been proposed for transport operators.
-            </li>
-          </ul>
-        </section>
+        </div>
+        <p class="note">Example values are illustrative, not real prices.</p>
+      </section>
 
-        <!-- Video: embedded from YouTube; no autoplay -->
-        <section>
-          <h2>Short introduction</h2>
-          <p>Learn more about electric vehicles in this short introduction video.</p>
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/xNZR4wB-T80?si=UJM5B069TWxP-KoL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-          <p><small>Video source: Youtube.</small></p>
-        </section>
-      </main>
+      <!-- Benefits -->
+      <section id="benefits" class="wide">
+        <h2>Possible benefits</h2>
+        <ul class="cards cards-4">
+          <li class="card">
+            <img src="../images/icons/coins.svg" alt="" class="card-icon" width="48" height="48" />
+            <h3>Lower running costs</h3>
+            <p>Use the calculator to compare with your own figures.</p>
+          </li>
+          <li class="card">
+            <img src="../images/icons/bolt.svg" alt="" class="card-icon" width="48" height="48" />
+            <h3>Less dependence on fuel</h3>
+            <p>Electric vehicles do not need diesel or petrol, so fuel queues do not stop them.</p>
+          </li>
+          <li class="card">
+            <img src="../images/icons/leaf.svg" alt="" class="card-icon" width="48" height="48" />
+            <h3>Cleaner, quieter streets</h3>
+            <p>No exhaust fumes from the vehicle, and much less engine noise.</p>
+          </li>
+          <li class="card">
+            <img src="../images/icons/bank.svg" alt="" class="card-icon" width="48" height="48" />
+            <h3>Financing and incentives</h3>
+            <p>Financing schemes and tax incentives have been proposed for transport operators.</p>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Financing and incentives -->
+      <section id="financing" class="band">
+        <h2>Financing and incentives</h2>
+        <p>
+          The biggest barrier to switching is the price of the vehicle. Two
+          kinds of help have been proposed for transport operators:
+        </p>
+        <ul>
+          <li>
+            <strong>Financing schemes:</strong> loans designed for transport
+            operators, so the cost of a vehicle can be spread over time.
+          </li>
+          <li>
+            <strong>Tax incentives:</strong> lower taxes on electric vehicles,
+            to bring their price closer to diesel ones.
+          </li>
+        </ul>
+        <p>These are proposals and can change. Before you sign anything, ask:</p>
+        <ol class="steps">
+          <li>What is the total cost, including interest, over the whole loan?</li>
+          <li>Could the monthly fuel saving from the calculator cover the monthly payment?</li>
+          <li>What does the warranty cover, especially the battery?</li>
+          <li>Where will I charge, and how long will it take?</li>
+        </ol>
+        <p>
+          Not sure where to start?
+          <a href="contact.html">Send us your question</a> and choose
+          "Financing options" or "Incentives".
+        </p>
+      </section>
+
+      <!-- Charging station locations (User7) -->
+      <section id="charging" class="wide">
+        <h2>Where can I charge?</h2>
+        <p class="lead">
+          Most drivers charge overnight at home or at a depot. For longer days,
+          public charging points help.
+        </p>
+        <div class="map-layout">
+          <!-- OpenStreetMap of Cochabamba. loading="lazy" waits until you scroll here -->
+          <iframe
+            class="map"
+            title="Map of Cochabamba and the surrounding area"
+            src="https://www.openstreetmap.org/export/embed.html?bbox=-66.32%2C-17.46%2C-66.00%2C-17.32&amp;layer=mapnik"
+            loading="lazy"
+          ></iframe>
+          <div>
+            <h3>Example charging locations</h3>
+            <p class="hint">
+              These show how this part of the finished site would work. They
+              are <strong>not real stations</strong>: real station data is not
+              part of this prototype.
+            </p>
+            <ul class="station-list">
+              <li><strong>City centre</strong>, near Plaza 14 de Septiembre</li>
+              <li><strong>North</strong>, along Avenida América</li>
+              <li><strong>South</strong>, near the airport</li>
+              <li><strong>West</strong>, Quillacollo</li>
+              <li><strong>East</strong>, Sacaba</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Video: embedded from YouTube, no autoplay, captions on by default -->
+      <section id="video" class="band">
+        <h2>Electric vehicles explained</h2>
+        <p class="lead">
+          New to electric vehicles? This video covers the basics: how they
+          work, charging, range and running costs.
+        </p>
+        <!-- cc_load_policy=1 turns the captions on; loading="lazy" waits until you scroll here -->
+        <iframe
+          class="video"
+          src="https://www.youtube-nocookie.com/embed/xNZR4wB-T80?cc_load_policy=1"
+          title="Video: Electric Cars For Dummies, Absolutely Everything Explained (Autotrader)"
+          allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          loading="lazy"
+          allowfullscreen
+        ></iframe>
+        <p class="note">
+          Captions are on by default (use the CC button to turn them off).
+          Video: "Electric Cars For Dummies: Absolutely EVerything Explained" by
+          <a href="https://www.youtube.com/@Autotrader_uk">Autotrader</a>, on
+          YouTube. It was made in the UK, so some details, like prices, are different in Bolivia.
+        </p>
+      </section>
+
+      <!-- Call to action -->
+      <section class="cta">
+        <h2>Have a question about your situation?</h2>
+        <p>Tell us about your vehicle and your route, and we will get back to you.</p>
+        <div class="button-row">
+          <a href="contact.html" class="button">Contact us</a>
+        </div>
+      </section>
+    </main>
 
     <!-- Footer: same on every page -->
     <footer>
-      <p>&copy; 2026 ElectroCocha. All rights reserved.</p>
-      <a href="../index.html">Back to Home</a>
+      <p class="footer-logo">Electro<span>Cocha</span></p>
+      <p>Helping Cochabamba understand the switch to electric.</p>
+      <ul class="footer-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="solutions.html">Solutions</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="account.html">Sign in</a></li>
+      </ul>
+      <p class="footer-note">Student prototype. Figures are examples and nothing here is financial advice.</p>
+      <p>&copy; 2026 ElectroCocha. <a href="../index.html">Back to Home</a></p>
     </footer>
-    <script src="../src/main.js"></script>
     <script src="../src/calculator.js"></script>
   </body>
 </html>
