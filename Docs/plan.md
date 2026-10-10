@@ -61,7 +61,7 @@ Must = needed to pass the brief. Should = important. Could = nice to have.
 | `solutions.html` | EV options, cost calculator, benefits                                                      |
 | `about.html`     | Mission, partners, disclaimer                                                              |
 | `contact.html`   | Contact form with JavaScript validation                                                    |
-| fifth page       | **OPEN**: "coming on", not described yet. Do not expect it until the student describes it. |
+| `account.html`   | Fifth page: sign-in and sign-up forms with JavaScript validation (prototype, nothing is sent) |
 
 ### Contact form rules (JavaScript only, no server code)
 
@@ -112,9 +112,11 @@ Sprint 0 → Sprint 1 → Sprint 2 → Sprint 3 → Sprint 4
 
 electrococha/
 ├── index.html
-├── pages/ solutions.html, about.html, contact.html, fifth.html
+├── pages/ solutions.html, about.html, contact.html, account.html
 ├── style/ main.css
-├── src/ main.js, validation.js, calculator.js
+├── src/ main.js, validation.js, calculator.js, account.js
+├── images/ photo, illustration, infographic, favicon, icons/
+├── audio/ spoken summary (text-to-speech) with a transcript on the home page
 └── Docs/ working documents (plan, screenshots)
 
 ### Sprint 0: Setup
@@ -149,11 +151,11 @@ electrococha/
 
 ### Sprint 4: Polish and hand-in
 
-- [ ] `about.html`
-- [ ] Check every link works
-- [ ] Test accessibility
-- [ ] Test on Chrome
-- [ ] Review comments in all files
+- [x] `about.html`
+- [x] Check every link works
+- [x] Test accessibility
+- [x] Test on Chrome
+- [x] Review comments in all files
 - [ ] Write video script, record video (under 5 min)
 - [ ] Write the report (under 1,200 words)
 - **Deliverables:** zipped site, video, report
@@ -187,16 +189,14 @@ Why Agile fits ElectroCocha: fuel policy, EV incentives and charging plans in Bo
 
 ---
 
-## 8. OPEN items (decide before building)
+## 8. OPEN items (decided)
 
-1. **Fifth page:** what is it and what goes on it?
-2. **Cost calculator:** which inputs and values should it use? (The file only says "compare diesel and electric running costs".)
-3. **Query type dropdown:** which options should it list?
-4. **Infographic:** it is in the requirements and user story 8, but no sprint task mentions it. Include it or not?
-5. **Charging station locations (User7):** no page in the plan covers it. Which page, if any, should show it?
-6. **Folder and file names** other than `style.css`, `validation.js`, `calculator.js` and the four named pages.
-
----
+1. **Fifth page:** `account.html`, sign-in and sign-up forms (prototype only).
+2. **Cost calculator:** inputs are km per day, days per month, diesel litres per 100 km, diesel price (Bs per litre), electric kWh per 100 km, electricity price (Bs per kWh). Results show monthly costs as bars and the monthly and yearly difference. Example values: 100 km, 26 days, 30 L, Bs 5, 80 kWh, Bs 1 (illustrative, not real prices).
+3. **Query type dropdown:** General information, Vehicle costs and comparison, Financing options, Incentives, Other.
+4. **Infographic:** included on the home page (`images/infographic.svg`) with a text version underneath.
+5. **Charging station locations (User7):** on `solutions.html` (#charging): an OpenStreetMap of Cochabamba plus example locations, clearly marked as not real stations (real station data stays out of scope).
+6. **Folder and file names:** as in the folder structure above. Audio: `audio/electrococha-summary.mp3`.
 
 ## 9. Prompt to review each sprint
 
