@@ -3,45 +3,80 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home</title>
+    <meta
+      name="description"
+      content="ElectroCocha helps transport workers and drivers in Cochabamba compare diesel and electric running costs, financing and incentives."
+    />
+    <title>ElectroCocha | Home</title>
+    <!-- Small lightning bolt icon in the browser tab -->
+    <link rel="icon" href="images/favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="style/main.css" />
+    <!-- main.js runs first so the phone menu can start closed -->
+    <script src="src/main.js"></script>
   </head>
   <body>
-    <!-- Home page content -->
+    <!-- Skip link: lets keyboard users jump straight to the content -->
+    <a href="#main" class="skip-link">Skip to main content</a>
+
+    <!-- Header: same on every page -->
     <header>
-      <nav>
+      <nav aria-label="Main">
         <!-- Text logo: links back to the home page -->
         <a href="index.html" class="logo">Electro<span>Cocha</span></a>
-        <!-- Navigation links: link to other pages -->
-        <a href="index.html">Home</a>
-        <a href="pages/solutions.html">Solutions</a>
-        <a href="pages/about.html">About</a>
-        <a href="pages/contact.html">Contact</a>
-        <a href="pages/account.html">Sign in</a>
+        <!-- Menu button: only shown on small screens when JavaScript is on -->
+        <button type="button" class="menu-button" aria-expanded="false" aria-controls="nav-links">
+          Menu
+        </button>
+        <!-- Navigation links. aria-current marks the page you are on -->
+        <ul id="nav-links" class="nav-links">
+          <li><a href="index.html" aria-current="page">Home</a></li>
+          <li><a href="pages/solutions.html">Solutions</a></li>
+          <li><a href="pages/about.html">About</a></li>
+          <li><a href="pages/contact.html">Contact</a></li>
+          <li><a href="pages/account.html">Sign in</a></li>
+        </ul>
       </nav>
     </header>
+
     <!-- Main: the unique content of this page -->
-    <main>
-      <!-- Hero: headline and call to action -->
-      <div>
+    <main id="main">
+      <!-- Hero: headline, call to action and illustration -->
       <section class="hero">
-        <h1>Fuel prices are climbing. Your route doesn't have to stop.</h1>
-        <p>
-          ElectroCocha helps transport workers and drivers in Cochabamba
-          understand what switching to electric could cost, how it could be
-          financed, and which incentives may help.
-        </p>
-        <a href="pages/contact.html" class="button">Get in touch</a>
+        <div class="hero-inner">
+          <div>
+            <p class="eyebrow">Electric transport for Cochabamba</p>
+            <h1>Fuel prices are climbing. Your route doesn't have to stop.</h1>
+            <p>
+              ElectroCocha helps transport workers and drivers in Cochabamba
+              understand what switching to electric could cost, how it could be
+              financed, and which incentives may help.
+            </p>
+            <div class="button-row">
+              <a href="pages/solutions.html#calculator" class="button">Compare your costs</a>
+              <a href="pages/contact.html" class="button button-outline">Get in touch</a>
+            </div>
+          </div>
+          <img
+            src="images/hero-bus.svg"
+            alt="Illustration of an electric bus plugged into a charging post, with mountains behind it"
+            width="600"
+            height="420"
+          />
+        </div>
       </section>
 
       <!-- The problem -->
       <section>
         <h2>The problem</h2>
+        <!-- Callout: the key number, so it stands out -->
+        <p class="callout">
+          <strong>160%+</strong>
+          rise in diesel prices after fuel subsidies were removed (reported).
+        </p>
         <p>
-          Bolivia is facing severe diesel and petrol shortages. After fuel
-          subsidies were removed, diesel prices rose by more than 160%. For a
-          bus or taxi operator, fuel is a major daily cost, so every price jump
-          lands on the people who keep the city moving.
+          Bolivia is facing severe diesel and petrol shortages. For a bus or
+          taxi operator, fuel is a major daily cost, so every price jump lands
+          on the people who keep the city moving.
         </p>
         <p>
           Long queues, blockades and an unreliable supply make it worse. A
@@ -53,62 +88,153 @@
         </p>
       </section>
 
-      <!-- The solution -->
-      <section>
+      <!-- The solution: four cards, each linking to the matching part of the Solutions page -->
+      <section class="wide band">
         <h2>The solution</h2>
-        <p>
+        <p class="lead">
           ElectroCocha explains the switch to electric in plain language, so
           people can decide for themselves.
         </p>
-        <ul>
-          <li>
-            <strong>Costs:</strong> compare the running costs of diesel and
-            electric vehicles with our calculator.
+        <ul class="cards cards-4">
+          <li class="card">
+            <img src="images/icons/coins.svg" alt="" class="card-icon" width="48" height="48" />
+            <h3>Costs</h3>
+            <p>Compare the running costs of diesel and electric vehicles with our calculator.</p>
+            <a href="pages/solutions.html#calculator" class="card-link">Open the calculator</a>
           </li>
-          <li>
-            <strong>Financing:</strong> understand the financing schemes
-            proposed for transport operators.
+          <li class="card">
+            <img src="images/icons/bank.svg" alt="" class="card-icon" width="48" height="48" />
+            <h3>Financing</h3>
+            <p>Understand the financing schemes proposed for transport operators.</p>
+            <a href="pages/solutions.html#financing" class="card-link">Read about financing</a>
           </li>
-          <li>
-            <strong>Incentives:</strong> learn about the tax incentives proposed
-            for electric vehicles.
+          <li class="card">
+            <img src="images/icons/tag.svg" alt="" class="card-icon" width="48" height="48" />
+            <h3>Incentives</h3>
+            <p>Learn about the tax incentives proposed for electric vehicles.</p>
+            <a href="pages/solutions.html#financing" class="card-link">Read about incentives</a>
+          </li>
+          <li class="card">
+            <img src="images/icons/plug.svg" alt="" class="card-icon" width="48" height="48" />
+            <h3>Charging</h3>
+            <p>See where you could charge in and around Cochabamba.</p>
+            <a href="pages/solutions.html#charging" class="card-link">See the map</a>
           </li>
         </ul>
-        <p>
+        <p class="note">
           The city has proposed electric public transport as a choice for
           transport workers, not a requirement. ElectroCocha exists to make that
           choice an informed one.
         </p>
       </section>
 
-      <!-- Who it is for -->
+      <!-- Infographic: image plus the same information as text -->
       <section>
+        <h2>Diesel or electric at a glance</h2>
+        <figure class="infographic">
+          <img
+            src="images/infographic.svg"
+            alt="Infographic. Diesel prices rose more than 160 percent. With example values, 100 km costs Bs 150 with diesel and Bs 80 with electric, so a month of 100 km a day for 26 days saves Bs 1,820. Full text below."
+            width="800"
+            height="600"
+            loading="lazy"
+          />
+          <figcaption>Example values only, not real prices.</figcaption>
+        </figure>
+        <!-- Text version of the infographic, for screen readers and anyone who prefers text -->
+        <details>
+          <summary>Read the infographic as text</summary>
+          <ul>
+            <li><strong>The problem:</strong> diesel prices rose by more than 160% after fuel subsidies were removed (reported).</li>
+            <li><strong>Cost per 100 km:</strong> diesel Bs 150 (30 litres at Bs 5), electric Bs 80 (80 kWh at Bs 1).</li>
+            <li><strong>An example month</strong> (100 km a day, 26 days): diesel Bs 3,900, electric Bs 2,080, a saving of Bs 1,820.</li>
+            <li><strong>Switching in 4 steps:</strong> compare your running costs, check financing and incentives, plan where you will charge, talk to ElectroCocha.</li>
+          </ul>
+          <p>These are example values. They leave out the vehicle price, maintenance and financing.</p>
+        </details>
+      </section>
+
+      <!-- Who it is for -->
+      <section class="wide band">
         <h2>Who it is for</h2>
-        <ul>
-          <li>
-            <strong>Bus and taxi operators:</strong> weighing the cost of
-            switching.
+        <ul class="cards cards-4">
+          <li class="card">
+            <img src="images/icons/bus.svg" alt="" class="card-icon" width="48" height="48" />
+            <h3>Bus and taxi operators</h3>
+            <p>Weighing the cost of switching their vehicles.</p>
           </li>
-          <li>
-            <strong>Private drivers:</strong> looking for a way around fuel
-            shortages.
+          <li class="card">
+            <img src="images/icons/car.svg" alt="" class="card-icon" width="48" height="48" />
+            <h3>Private drivers</h3>
+            <p>Looking for a way around fuel shortages.</p>
           </li>
-          <li>
-            <strong>Commuters:</strong> who rely on affordable, dependable
-            transport.
+          <li class="card">
+            <img src="images/icons/person.svg" alt="" class="card-icon" width="48" height="48" />
+            <h3>Commuters</h3>
+            <p>Who rely on affordable, dependable transport.</p>
           </li>
-          <li>
-            <strong>Local government:</strong> planning the move to electric
-            transport.
+          <li class="card">
+            <img src="images/icons/bank.svg" alt="" class="card-icon" width="48" height="48" />
+            <h3>Local government</h3>
+            <p>Planning the move to electric transport.</p>
           </li>
         </ul>
       </section>
-      </div>
+
+      <!-- Audio: a short spoken summary, with a transcript -->
+      <section>
+        <h2>Listen to a one-minute summary</h2>
+        <p class="lead">No time to read? Listen to what ElectroCocha is about.</p>
+        <!-- controls shows play/pause; preload="none" saves data until the user presses play -->
+        <audio controls preload="none">
+          <source src="audio/electrococha-summary.mp3" type="audio/mpeg" />
+          Your browser cannot play this audio. Please read the transcript below.
+        </audio>
+        <details>
+          <summary>Read the transcript</summary>
+          <p>
+            Welcome to ElectroCocha. In Bolivia, fuel shortages, and a rise of
+            more than one hundred and sixty percent in diesel prices, are
+            putting real pressure on transport workers in Cochabamba. Electric
+            vehicles are one possible way forward.
+          </p>
+          <p>
+            On this website, you can compare diesel and electric running costs
+            with our calculator, learn about the financing and incentives that
+            have been proposed, and see where you could charge.
+          </p>
+          <p>
+            ElectroCocha is a student prototype, so the figures you see are
+            examples, not real prices. When you are ready, send us a message
+            through the contact form. Thank you for listening.
+          </p>
+        </details>
+      </section>
+
+      <!-- Call to action: a clear next step -->
+      <section class="cta">
+        <h2>Ready to see what you could save?</h2>
+        <p>It takes about a minute, and nothing you type is sent anywhere.</p>
+        <div class="button-row">
+          <a href="pages/solutions.html#calculator" class="button">Try the calculator</a>
+          <a href="pages/contact.html" class="button button-outline">Ask a question</a>
+        </div>
+      </section>
     </main>
+
+    <!-- Footer: same on every page -->
     <footer>
-      <p>&copy; 2026 ElectroCocha. All rights reserved.</p>
-      <a href="index.html">Back to Home</a>
+      <p class="footer-logo">Electro<span>Cocha</span></p>
+      <p>Helping Cochabamba understand the switch to electric.</p>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="pages/solutions.html">Solutions</a></li>
+        <li><a href="pages/about.html">About</a></li>
+        <li><a href="pages/contact.html">Contact</a></li>
+        <li><a href="pages/account.html">Sign in</a></li>
+      </ul>
+      <p class="footer-note">Student prototype. Figures are examples and nothing here is financial advice.</p>
+      <p>&copy; 2026 ElectroCocha. <a href="index.html">Back to Home</a></p>
     </footer>
-    <script src="src/main.js"></script>
   </body>
 </html>
